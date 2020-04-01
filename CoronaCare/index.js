@@ -7,7 +7,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: "navigation.CoronaCare.WelcomeScreen"
+        name: "navigation.CoronaCare.LoginScreen"
       }
     }
   });

@@ -10,7 +10,7 @@ const App = () => {
           stack: {
             children: [{
               component: {
-                name: 'navigation.CoronaCare.HomeScreen',
+                name: 'navigation.CoronaCare.RecordsScreen',
                 passProps: {
                   text: 'This is tab 1'
                 }
@@ -34,6 +34,21 @@ const App = () => {
             options: {
               bottomTab: {
                 text: 'Tab 2',
+                icon: require('./assets/images/thermometer.png'),
+                testID: 'SECOND_TAB_BAR_BUTTON'
+              }
+            }
+          }
+        },
+        {
+          component: {
+            name: 'navigation.CoronaCare.AfterLogin',
+            passProps: {
+              text: 'This is tab 3'
+            },
+            options: {
+              bottomTab: {
+                text: 'Tab 3',
                 icon: require('./assets/images/thermometer.png'),
                 testID: 'SECOND_TAB_BAR_BUTTON'
               }
