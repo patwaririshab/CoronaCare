@@ -1,11 +1,10 @@
 import App from '../App'
 import {Navigation} from 'react-native-navigation'
 import HomeScreen from '../screens/HomeScreen'
+import RecordsScreen from '../screens/RecordsScreen'
 
-const registerScreens = () => {
-    Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () => App);
-    Navigation.registerComponent(`navigation.CoronaCare.HomeScreen`, () => HomeScreen)
+export function registerScreens() {
+    Navigation.registerComponent(`navigation.CoronaCare.WelcomeScreen`, () => App);
+    Navigation.registerComponent(`navigation.CoronaCare.HomeScreen`, () => HomeScreen);
+    Navigation.registerComponent(`navigation.CoronaCare.RecordsScreen`, () => RecordsScreen);   
 }
-
-export default registerScreens
-
