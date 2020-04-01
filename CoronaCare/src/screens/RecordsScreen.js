@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, TextInput, Text, StyleSheet} from 'react-native';
 
-const RecordsScreen = () => {
+export default class RecordsScreen extends Component {
+  render() {
     return (
       <View style={styles.outsideWrapper}>
         <Text style={styles.welcomeText}>Records</Text>
       </View>
     );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -22,4 +24,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RecordsScreen
