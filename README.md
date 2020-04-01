@@ -25,3 +25,19 @@ The code is organised as shown below
   - `styles:` this module holds application level styles
 - `index.js:` this is the application entry file. This must not be messed with.
 
+
+# Challenges Faced
+
+1. Setting up `react-native-navigation`
+  - It was a horrific experience trying to debug why `react-native-navigation` isnt working.
+    I kept getting the error mentioned in https://github.com/wix/react-native-navigation/issues/5520
+  - Resolution: 
+    - Manually update the android native files as per instruction in the library documentaion
+    - FOR IOS: 
+      - **DO NOT DO** do manual linking first
+      - Simply have to `cd ios && pod install`
+      - Then go to AppDelegate.m and then udpate the didFinishLaunchingWithOptions() entry method with the code in the documentation
+
+
+
+
