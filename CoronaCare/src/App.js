@@ -27,7 +27,7 @@ const App = () => {
         },
         {
           component: {
-            name: 'navigation.CoronaCare.HomeScreen',
+            name: 'navigation.CoronaCare.RecordsScreen',
             passProps: {
               text: 'This is tab 2'
             },
