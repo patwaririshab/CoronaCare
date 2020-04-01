@@ -18,7 +18,7 @@ const App = () => {
             }],
             options: {
               bottomTab: {
-                text: 'Take Temperature',
+                text: 'Tab 1',
                 icon: require('./assets/images/thermometer.png'),
                 testID: 'FIRST_TAB_BAR_BUTTON'
               }
@@ -44,7 +44,9 @@ const App = () => {
     }
   });
 
-  return(<></>)
+  return(
+    <></>
+  )
 }  
 
 export default App
