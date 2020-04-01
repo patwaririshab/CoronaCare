@@ -6,6 +6,10 @@
  * @flow strict-local
  */
 
+import HomeScreen from './screens/home';
+import Login from './screens/Login';
+import AfterLogin from './screens/AfterLogin';
+import Records from './screens/Records';
 import React from 'react';
 import {
   SafeAreaView,
@@ -27,6 +31,10 @@ import {
 const App: () => React$Node = () => {
   return (
     <>
+      <HomeScreen></HomeScreen>
+      <Login></Login>
+      <AfterLogin></AfterLogin>
+      <Records></Records>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
