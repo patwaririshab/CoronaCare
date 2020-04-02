@@ -3,7 +3,7 @@
 
 ## What is CoronaCare?
 A mobile app platform to record and upload your daily temperature to myaces. 
-It makes surviging Covid-19 and daily temperature taking a breeze! Jerome changes
+It makes surviging Covid-19 and daily temperature taking a breeze!
 
 ## App Organisation 
 References: 
