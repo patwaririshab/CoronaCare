@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "16.11.0",
     "react-native": "0.62.0",
+    "react-native-camera": "^3.21.0",
     "react-native-navigation": "^6.4.0"
   },
   "devDependencies": {
