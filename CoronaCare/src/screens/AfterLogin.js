@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
-import { Icon } from 'react-native-elements'
+
 
 
 
@@ -11,23 +11,36 @@ export default class Home extends Component {
         return (
             
            
-                <View>
-                    
+             <View style = {styles.outsideWrapper}>
+                <View style={styles.tempButton}>    
                 <Button 
-                small
                 title = "Capture Temperature"
-                rightIcon={{name: 'camera'}}
                 type = "outline"
-                style = {styles.buttonFirst}
                 
-                />
+                /></View>
 
-                <Button
+                <View style = {styles.tempButton}>
+                <Button 
                 title = "View Records"
-                color = "black"
-                />
+                type = "outline"
+                /></View>
+
+
             </View>
         );
     }
 }
 
+const styles = StyleSheet.create({
+    outsideWrapper: {
+        display: "flex",
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    
+    },
+
+    tempButton: {
+        marginTop: 20, marginBottom: 20, 
+    }
+});
