@@ -31,6 +31,7 @@ export default class Home extends Component {
                 <Button
                 title = "View Records"
                 color = "black"
+                onPress = {this.changeToCameraScreen.bind(this)}
                 />
             </View>
         );
