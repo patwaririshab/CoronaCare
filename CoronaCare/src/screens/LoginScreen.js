@@ -27,11 +27,8 @@ export default class LoginScreen extends Component {
                 <Text style={styles.welcomeText}>Log in</Text>
                 <Text style = {styles.detailsText}>Log in to your myaces.nus.edu account.</Text>
                 <View style={styles.inputContainer}>
-                    <TextInput style={styles.inputText}>
-                        Insert Username
-                </TextInput>
-                    <TextInput style={styles.inputText}>
-                        Insert Password
+                    <TextInput style={styles.inputText} placeholder="Username"/>
+                    <TextInput style={styles.inputText} placeholder="Password" secureTextEntry={true}>
                 </TextInput>
                     <Button onPress={this.changeScreen.bind(this)} title="Submit">Submit</Button>
                 </View>
@@ -71,7 +68,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 300,
         backgroundColor: 'rgba(255,255,255,0.7)',
-        marginTop: 10, marginBottom: 10,
+        marginTop: 10, marginBottom: 10,paddingLeft: 10,
         borderRadius: 6,
     }
 });
