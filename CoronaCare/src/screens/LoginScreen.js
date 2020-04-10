@@ -14,7 +14,7 @@ export default class LoginScreen extends Component {
         Navigation.setRoot({
             root: {
                 component: {
-                    name: "navigation.CoronaCare.WelcomeScreen"
+                    name: "navigation.CoronaCare.NavigationTabInitialiser"
                 }
             }
         });

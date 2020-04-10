@@ -5,9 +5,11 @@ import RecordsScreen from '../screens/RecordsScreen'
 import LoginScreen from '../screens/LoginScreen'
 import AfterLogin from '../screens/AfterLogin'
 import CameraScreen from '../screens/CameraScreen'
+import NavigationTabInitialiser from './NavigationTabInitialiser'
 
 export function registerScreens(){
-    Navigation.registerComponent(`navigation.CoronaCare.WelcomeScreen`, () => App);
+    Navigation.registerComponent(`navigation.CoronaCare.App`, () => App)
+    Navigation.registerComponent(`navigation.CoronaCare.NavigationTabInitialiser`, () => NavigationTabInitialiser);
     Navigation.registerComponent(`navigation.CoronaCare.HomeScreen`, () => HomeScreen);
     Navigation.registerComponent(`navigation.CoronaCare.RecordsScreen`, () => RecordsScreen);
     Navigation.registerComponent(`navigation.CoronaCare.LoginScreen`, () => LoginScreen);
