@@ -57,13 +57,11 @@ export default class LoginScreen extends Component {
                         <TextInput
                             style={styles.inputText}
                             placeholder="Username"
-                            autoCorrect="false"
                             autoCapitalize="none"
                             onChangeText={newText => this.setState({ username: newText })} />
                         <TextInput
                             style={styles.inputText}
                             placeholder="Password" 
-                            autoCorrect="false"
                             autoCapitalize="none"
                             secureTextEntry={true}
                             onChangeText={newPass => this.setState({ password: newPass })} />
