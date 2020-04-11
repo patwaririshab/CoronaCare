@@ -26,8 +26,7 @@ export default class LoginScreen extends Component {
     }
 
     sinInUser = () => {
-        console.log(this.state.username)
-        console.log(this.state.password)
+        console.log("Signing in" + this.state.username)
         auth()
             .createUserWithEmailAndPassword(this.state.username, this.state.password)
             .then(() => {

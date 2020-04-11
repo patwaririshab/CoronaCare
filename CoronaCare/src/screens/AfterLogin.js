@@ -14,13 +14,6 @@ export default class Home extends Component {
                 name: 'navigation.CoronaCare.CameraScreen'
               }
         })
-        // Navigation.setRoot({
-        //     root: {
-        //         component: {
-        //             name: "navigation.CoronaCare.CameraScreen"
-        //         }
-        //     }
-        // })
     }
 
     render() {
