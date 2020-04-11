@@ -23,6 +23,11 @@
 		C341DAB12440DDC300B018C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C341DAAF2440DDC300B018C7 /* GoogleService-Info.plist */; };
 		C341DAB22440DDC300B018C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C341DAAF2440DDC300B018C7 /* GoogleService-Info.plist */; };
 		C341DAB32440DDC300B018C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C341DAAF2440DDC300B018C7 /* GoogleService-Info.plist */; };
+		C341DAB52441BFC700B018C7 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C341DAB42441BFC700B018C7 /* libRNGoogleSignin.a */; };
+		C341DAB72441BFD700B018C7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C341DAB62441BFD700B018C7 /* AddressBook.framework */; };
+		C341DAB92441BFE200B018C7 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C341DAB82441BFE200B018C7 /* SafariServices.framework */; };
+		C341DABB2441BFF500B018C7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C341DABA2441BFF500B018C7 /* libz.tbd */; };
+		C341DABD2441C19100B018C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C341DABC2441C19100B018C7 /* SystemConfiguration.framework */; };
 		C456BD227084903C70066694 /* libPods-CoronaCare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00303F5173909FDADCBA8CBC /* libPods-CoronaCare.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +73,11 @@
 		82BE269220CB7531C4E0DA43 /* libPods-CoronaCare-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoronaCare-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB99D6A2ADA8D01EC95FB5C /* Pods-CoronaCare-CoronaCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaCare-CoronaCareTests.release.xcconfig"; path = "Target Support Files/Pods-CoronaCare-CoronaCareTests/Pods-CoronaCare-CoronaCareTests.release.xcconfig"; sourceTree = "<group>"; };
 		C341DAAF2440DDC300B018C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C341DAB42441BFC700B018C7 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C341DAB62441BFD700B018C7 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		C341DAB82441BFE200B018C7 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		C341DABA2441BFF500B018C7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C341DABC2441C19100B018C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E0855F73BD5649897A2ECF37 /* Pods-CoronaCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaCare.debug.xcconfig"; path = "Target Support Files/Pods-CoronaCare/Pods-CoronaCare.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -87,6 +97,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C341DABD2441C19100B018C7 /* SystemConfiguration.framework in Frameworks */,
+				C341DABB2441BFF500B018C7 /* libz.tbd in Frameworks */,
+				C341DAB92441BFE200B018C7 /* SafariServices.framework in Frameworks */,
+				C341DAB72441BFD700B018C7 /* AddressBook.framework in Frameworks */,
+				C341DAB52441BFC700B018C7 /* libRNGoogleSignin.a in Frameworks */,
 				C456BD227084903C70066694 /* libPods-CoronaCare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +160,11 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C341DABC2441C19100B018C7 /* SystemConfiguration.framework */,
+				C341DABA2441BFF500B018C7 /* libz.tbd */,
+				C341DAB82441BFE200B018C7 /* SafariServices.framework */,
+				C341DAB62441BFD700B018C7 /* AddressBook.framework */,
+				C341DAB42441BFC700B018C7 /* libRNGoogleSignin.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				00303F5173909FDADCBA8CBC /* libPods-CoronaCare.a */,
@@ -440,6 +460,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CoronaCare-CoronaCareTests/Pods-CoronaCare-CoronaCareTests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -460,6 +481,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -490,6 +512,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CoronaCare/Pods-CoronaCare-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -510,6 +533,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -763,6 +787,8 @@
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CoronaCare;
@@ -785,6 +811,8 @@
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CoronaCare;

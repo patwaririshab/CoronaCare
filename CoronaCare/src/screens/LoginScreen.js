@@ -5,6 +5,22 @@ import Colors from 'react-native/Libraries/NewAppScreen';
 import HomeButtons from '../components/atoms/homebuttons';
 import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin'
+
+async function onGoogleButtonPress() {
+    await GoogleSignin.configure({
+        webClientId: "109484316758-p26b20c6b03b4h1e4aoq0p4s7cftl9gd.apps.googleusercontent.com",
+        // iosClientId: "109484316758-0dp9vjjepnkm1opeaqind03n11531p3q.apps.googleusercontent.com"
+    })
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+}
 
 export default class LoginScreen extends Component {
     constructor(props) {
@@ -60,7 +76,7 @@ export default class LoginScreen extends Component {
                             onChangeText={newText => this.setState({ username: newText })} />
                         <TextInput
                             style={styles.inputText}
-                            placeholder="Password" 
+                            placeholder="Password"
                             autoCapitalize="none"
                             secureTextEntry={true}
                             onChangeText={newPass => this.setState({ password: newPass })} />
@@ -69,6 +85,10 @@ export default class LoginScreen extends Component {
                             title="Submit">
                             Submit
                         </Button>
+                        <Button
+                            title="Google Sign-In"
+                            onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+                        />
                     </View>
                 </View>
             </LinearGradient>
