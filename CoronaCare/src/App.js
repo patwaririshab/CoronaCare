@@ -1,68 +1,34 @@
-import React from 'react'
-import { View, Text } from "react-native"
-import {Navigation} from "react-native-navigation"
+import React, { useState, useEffect } from 'react';
+import auth from '@react-native-firebase/auth';
+import LoginScreen from "./screens/LoginScreen"
+import NavigationTabInitialiser from "./navigation/NavigationTabInitialiser"
 
-const App = () => {
-  Navigation.setRoot({
-    root: {
-      bottomTabs: {
-        children: [{
-          stack: {
-            children: [{
-              component: {
-                name: 'navigation.CoronaCare.RecordsScreen',
-                passProps: {
-                  text: 'This is tab 1'
-                }
-              }
-            }],
-            options: {
-              bottomTab: {
-                text: 'Tab 1',
-                icon: require('./assets/images/thermometer.png'),
-                testID: 'FIRST_TAB_BAR_BUTTON'
-              }
-            }
-          }
-        },
-        {
-          component: {
-            name: 'navigation.CoronaCare.HomeScreen',
-            passProps: {
-              text: 'This is tab 2'
-            },
-            options: {
-              bottomTab: {
-                text: 'Tab 2',
-                icon: require('./assets/images/thermometer.png'),
-                testID: 'SECOND_TAB_BAR_BUTTON'
-              }
-            }
-          }
-        },
-        {
-          component: {
-            name: 'navigation.CoronaCare.AfterLogin',
-            passProps: {
-              text: 'This is tab 3'
-            },
-            options: {
-              bottomTab: {
-                text: 'Tab 3',
-                icon: require('./assets/images/thermometer.png'),
-                testID: 'SECOND_TAB_BAR_BUTTON'
-              }
-            }
-          }
-        }]
-      }
-    }
-  });
+export default function App() {
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
 
-  return(
-    <></>
-  )
-}  
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
 
-export default App
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  if (!user) {
+    return (
+      <LoginScreen />
+    );
+  }
+
+  return (
+    <NavigationTabInitialiser />
+  );
+}
 

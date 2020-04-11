@@ -9,12 +9,10 @@ export default class Home extends Component {
     }
     
     changeToCameraScreen = () => {
-        Navigation.setRoot({
-            root: {
-                component: {
-                    name: "navigation.CoronaCare.CameraScreen"
-                }
-            }
+        Navigation.push("AFTERLOGIN_STACK", {
+            component: {
+                name: 'navigation.CoronaCare.CameraScreen'
+              }
         })
     }
 
