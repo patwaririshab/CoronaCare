@@ -9,7 +9,7 @@ import { GoogleSignin } from '@react-native-community/google-signin'
 
 async function onGoogleButtonPress() {
     await GoogleSignin.configure({
-        webClientId: "109484316758-p26b20c6b03b4h1e4aoq0p4s7cftl9gd.apps.googleusercontent.com",
+        webClientId: "109484316758-i49r5g01u99t6l738vncov3p00c7bne2.apps.googleusercontent.com",
         // iosClientId: "109484316758-0dp9vjjepnkm1opeaqind03n11531p3q.apps.googleusercontent.com"
     })
     // Get the users ID token
