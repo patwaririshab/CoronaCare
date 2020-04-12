@@ -5,6 +5,14 @@
 A mobile app platform to record and upload your daily temperature to myaces. 
 It makes surviging Covid-19 and daily temperature taking a breeze! Jerome changes
 
+## Setup
+1. If using 
+    - SSH: `git clone git@github.com:crazyRichAsians/CoronaCare.git`
+    - HTTPS: `git clone https://github.com/crazyRichAsians/CoronaCare.git`
+  
+2. `yarn install`
+3. `cd ios && pod install` 
+
 ## App Organisation 
 References: 
 [App Structure Reference](https://medium.com/the-andela-way/how-to-structure-a-react-native-app-for-scale-a29194cd33fc)
