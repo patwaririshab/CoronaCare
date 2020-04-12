@@ -25,15 +25,15 @@ export default function App() {
   }, []);
 
   if (initializing) return null;
-
+  
   if (!user) {
     return (
       <LoginScreen />
     );
-  }
+  } 
 
   return (
-    <NavigationTabInitialiser />
+    <NavigationTabInitialiser/>
   );
 }
 

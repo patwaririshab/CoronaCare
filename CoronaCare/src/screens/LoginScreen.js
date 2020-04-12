@@ -44,7 +44,7 @@ export default class LoginScreen extends Component {
     sinInUser = () => {
         console.log("Signing in" + this.state.username)
         auth()
-            .createUserWithEmailAndPassword(this.state.username, this.state.password)
+            .signInWithEmailAndPassword(this.state.username, this.state.password)
             .then(() => {
                 console.log('User account created & signed in!');
                 this.changeScreen.bind(this)
@@ -57,7 +57,6 @@ export default class LoginScreen extends Component {
                 if (error.code === 'auth/invalid-email') {
                     console.log('That email address is invalid!');
                 }
-
                 console.error(error);
             });
     }
@@ -87,7 +86,7 @@ export default class LoginScreen extends Component {
                         </Button>
                         <Button
                             title="Google Sign-In"
-                            onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+                            onPress={() => onGoogleButtonPress()}
                         />
                     </View>
                 </View>
