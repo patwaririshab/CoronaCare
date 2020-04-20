@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, StyleSheet, Button } from 'react-native';
 import { Navigation } from "react-native-navigation"
-import Colors from 'react-native/Libraries/NewAppScreen';
-import HomeButtons from '../components/atoms/homebuttons';
 import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
+import onGoogleButtonPress from '../services/GoogleSignin'
 
 export default class LoginScreen extends Component {
     constructor(props) {
@@ -28,7 +27,7 @@ export default class LoginScreen extends Component {
     sinInUser = () => {
         console.log("Signing in" + this.state.username)
         auth()
-            .createUserWithEmailAndPassword(this.state.username, this.state.password)
+            .signInWithEmailAndPassword(this.state.username, this.state.password)
             .then(() => {
                 console.log('User account created & signed in!');
                 this.changeScreen.bind(this)
@@ -41,7 +40,6 @@ export default class LoginScreen extends Component {
                 if (error.code === 'auth/invalid-email') {
                     console.log('That email address is invalid!');
                 }
-
                 console.error(error);
             });
     }
@@ -60,7 +58,7 @@ export default class LoginScreen extends Component {
                             onChangeText={newText => this.setState({ username: newText })} />
                         <TextInput
                             style={styles.inputText}
-                            placeholder="Password" 
+                            placeholder="Password"
                             autoCapitalize="none"
                             secureTextEntry={true}
                             onChangeText={newPass => this.setState({ password: newPass })} />
@@ -69,6 +67,10 @@ export default class LoginScreen extends Component {
                             title="Submit">
                             Submit
                         </Button>
+                        <Button
+                            title="Google Sign-In"
+                            onPress={() => onGoogleButtonPress()}
+                        />
                     </View>
                 </View>
             </LinearGradient>

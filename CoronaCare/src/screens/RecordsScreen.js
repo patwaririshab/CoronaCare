@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text, FlatList, TextInput, Button, StyleSheet, Image, Dimensions} from 'react-native';
+import auth from '@react-native-firebase/auth';
+import { Navigation } from 'react-native-navigation';
 
 export default class RecordsScreen extends Component {
   constructor(props) {
@@ -14,6 +16,22 @@ export default class RecordsScreen extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcomeText}>Records</Text> 
+      <Button 
+        title="Sign Out"
+        onPress={() => {
+          auth()
+          .signOut()
+          .then(() => console.log('User signed out!'))
+          .then(() => { 
+            Navigation.setRoot({
+            root: {
+              component: {
+                name: "navigation.CoronaCare.App"
+              }
+            }
+          })})
+        }
+      }/>
         <FlatList
           keyExtractor={(item) => item.key}
           data={DATA}

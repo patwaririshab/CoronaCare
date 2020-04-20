@@ -32,6 +32,8 @@ static void InitializeFlipper(UIApplication *application) {
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
+  [GIDSignIn sharedInstance].clientID = @"YOUR_CLIENT_ID";
+  [GIDSignIn sharedInstance].delegate = self;
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
   return YES;
@@ -45,5 +47,30 @@ static void InitializeFlipper(UIApplication *application) {
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+  return [[GIDSignIn sharedInstance] handleURL:url];
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+didSignInForUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+  if (error != nil) {
+    if (error.code == kGIDSignInErrorCodeHasNoAuthInKeychain) {
+      NSLog(@"The user has not signed in before or they have since signed out.");
+    } else {
+      NSLog(@"%@", error.localizedDescription);
+    }
+    return;
+  }
+  }
+
+- (void)signIn:(GIDSignIn *)signIn
+didDisconnectWithUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+}
+
 
 @end
