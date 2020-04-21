@@ -1,25 +1,33 @@
 import firestore from '@react-native-firebase/firestore';
 import firebase from '@react-native-firebase/app'
+import auth from '@react-native-firebase/auth'
 import storage from '@react-native-firebase/storage'
+import {FullDateLocalTimeZone, CurrentTimeLocalTimeZone} from '../services/CurrentDateGenerator'
 
+const userEmail = auth().currentUser.email
 
-export function uploadImage(data) {
-    const ref = firebase.storage().ref('image2.jpg')
+export async function uploadImage(data) {
+    const currentDate = FullDateLocalTimeZone()
+    const currentTime = CurrentTimeLocalTimeZone()
     const pathToFile = data.uri
-    return ref.putFile(pathToFile)
+    const ref = await firebase.storage().ref(`${userEmail}/${currentDate}/${currentTime}.jpg`)
+    await ref.putFile(pathToFile)
+    const url = await ref.getDownloadURL()
+    return url
 }
 
 
-export function uploadEntry(data){
-    let docRef = firestore().collection('images');
+export function uploadEntry(imageUrl, temperature, timestamp, ){
+    let docRef = firestore().collection('records')
    docRef
    .add({
-        name: "rishab",
-        title: "test message",
-        imageUrl: data.uri
+        temperature: temperature,
+        timestamp: timestamp,
+        imageUrl: imageUrl,
+        userEmail: userEmail
     })
     .then(() => {
-        console.log('ImageUploaded');
+        console.log('Temperature Logged');
     }).catch((error) => {
         alert(error)
     });
