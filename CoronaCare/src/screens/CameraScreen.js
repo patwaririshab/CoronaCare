@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import {uploadImage, uploadEntry} from '../services/FirebaseImageUpload'
 
 export default class CameraScreen extends PureComponent {
   render() {
@@ -36,6 +37,8 @@ export default class CameraScreen extends PureComponent {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
+      const response = await uploadImage(data)
+      console.log(response)
       console.log(data.uri);
     }
   };
