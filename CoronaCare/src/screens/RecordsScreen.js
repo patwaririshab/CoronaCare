@@ -46,9 +46,14 @@ export default class RecordsScreen extends Component {
         title="Refresh Page"
         onPress={() => {
           this.setState({loading: true})
-          list = []
-          getData(list)
-          this.setState({loading:false})
+          getData()
+          .then(result => {
+            list = result;
+            console.log(list)
+            this.setState({loading:false})
+          })
+          .catch((error) => console.warn(error))
+          
         }}
       />
         <FlatList
