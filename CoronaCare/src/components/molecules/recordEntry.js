@@ -10,7 +10,7 @@ const RecordEntry = (props) => {
             <Text>{props.timestamp}</Text>
             </View>
             <View style={{flex: 1, justifyContent: "flex-end" }}>
-            <Text style={styles.title}> {props.title} </Text>
+            <Text style={styles.title}> {props.AMPM} </Text>
             <Text style={styles.Temperature}> {props.temperature} </Text>
             </View>
         </View> 
