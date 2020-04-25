@@ -41,6 +41,21 @@ const NavigationTabInitialiser = () => {
               },
             },
           },
+          {
+            component: {
+              name: 'navigation.CoronaCare.TempConfirmation',
+              passProps: {
+                text: 'This is tab 1',
+              },
+              options: {
+                bottomTab: {
+                  text: 'Records',
+                  icon: require('../assets/images/thermometer.png'),
+                  testID: 'FIRST_TAB_BAR_BUTTON',
+                },
+              },
+            },
+          },
         ],
       },
     },

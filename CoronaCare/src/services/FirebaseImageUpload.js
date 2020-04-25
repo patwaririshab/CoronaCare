@@ -4,9 +4,10 @@ import auth from '@react-native-firebase/auth'
 import storage from '@react-native-firebase/storage'
 import {FullDateLocalTimeZone, CurrentTimeLocalTimeZone} from '../services/CurrentDateGenerator'
 
-const userEmail = auth().currentUser.email
+
 
 export async function uploadImage(data) {
+    const userEmail = auth().currentUser.email
     const currentDate = FullDateLocalTimeZone()
     const currentTime = CurrentTimeLocalTimeZone()
     const pathToFile = data.uri
@@ -18,6 +19,7 @@ export async function uploadImage(data) {
 
 
 export function uploadEntry(imageUrl, temperature, timestamp, ){
+    const userEmail = auth().currentUser.email
     let docRef = firestore().collection('records')
    docRef
    .add({
