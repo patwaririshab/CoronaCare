@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import App from '../App'
 import {Navigation} from 'react-native-navigation'
 import HomeScreen from '../screens/HomeScreen'
@@ -14,5 +15,5 @@ export function registerScreens(){
     Navigation.registerComponent(`navigation.CoronaCare.RecordsScreen`, () => RecordsScreen);
     Navigation.registerComponent(`navigation.CoronaCare.LoginScreen`, () => LoginScreen);
     Navigation.registerComponent(`navigation.CoronaCare.AfterLogin`, () => AfterLogin);
-    Navigation.registerComponent(`navigation.CoronaCare.CameraScreen`, () => CameraScreen)
+    Navigation.registerComponent(`navigation.CoronaCare.CameraScreen`, () => CameraScreen);
 }

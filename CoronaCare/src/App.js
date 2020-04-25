@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
-import LoginScreen from "./screens/LoginScreen"
-import NavigationTabInitialiser from "./navigation/NavigationTabInitialiser"
-import { GoogleSignIn } from "@react-native-community/google-signin"
+import LoginScreen from './screens/LoginScreen';
+import NavigationTabInitialiser from './navigation/NavigationTabInitialiser';
+import {GoogleSignIn} from '@react-native-community/google-signin';
 
 // GoogleSignIn.configure({
 //     iosClientId: "109484316758-i49r5g01u99t6l738vncov3p00c7bne2.apps.googleusercontent.com",
@@ -16,7 +16,9 @@ export default function App() {
   // Handle user state changes
   function onAuthStateChanged(user) {
     setUser(user);
-    if (initializing) setInitializing(false);
+    if (initializing) {
+      setInitializing(false);
+    }
   }
 
   useEffect(() => {
@@ -24,16 +26,13 @@ export default function App() {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (initializing) return null;
-  
+  if (initializing) {
+    return null;
+  }
+
   if (!user) {
-    return (
-      <LoginScreen />
-    );
-  } 
+    return <LoginScreen />;
+  }
 
-  return (
-    <NavigationTabInitialiser/>
-  );
+  return <NavigationTabInitialiser />;
 }
-
