@@ -7,23 +7,41 @@ import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
 import {getData} from '../services/FetchData';
 
-var list = []
+const LoadingView = () => {
+  return (
+    <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Text h1 >
+        Loading
+      </Text>
+    </View>
+  )
+}
 
 export default class RecordsScreen extends Component {
   constructor(props) {
     super(props);
-    state = {
-      loading: false
+    this.state = {
+      loading: false,
+      list: []
     }
   }
-  componentWillMount(){
-    this.setState({loading:true})
-    getData(list)
-    this.setState({loading:false})
+
+  componentDidMount(){
+    this.fetchFlatListData()
+  }
+
+  fetchFlatListData = () => {
+      this.setState({loading: true})
+      getData().then(result => {
+      console.warn("THIS IS WORKING", result)
+      this.setState({list: result})
+      this.setState({loading: false})
+    })
   }
 
   render() {
-    return (
+    const { loading, list } = this.state
+     return (
       <View style={styles.container}>
         <Text style={styles.welcomeText}>Records</Text>
         <Button
@@ -44,18 +62,10 @@ export default class RecordsScreen extends Component {
       }/>
       <Button
         title="Refresh Page"
-        onPress={() => {
-          this.setState({loading: true})
-          getData()
-          .then(result => {
-            list = result;
-            console.log(list)
-            this.setState({loading:false})
-          })
-          .catch((error) => console.warn(error))
-          
-        }}
+        onPress={this.fetchFlatListData}
       />
+      {loading ? 
+      <LoadingView/> :
         <FlatList
           keyExtractor={(item) => item.key}
           data={list}
@@ -65,7 +75,7 @@ export default class RecordsScreen extends Component {
             temperature={item.temperature}
             timestamp={item.timestamp} />
           }
-        />
+        />}
       </View>
     );
   }
