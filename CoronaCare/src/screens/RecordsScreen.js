@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, Text, FlatList, Button, StyleSheet, Image, Dimensions } from 'react-native';
+import { SafeAreaView, View, Text, FlatList, Button, StyleSheet, Image, Dimensions } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
 import styles from '../styles/styles';
 import auth from '@react-native-firebase/auth';
@@ -42,7 +42,7 @@ export default class RecordsScreen extends Component {
   render() {
     const { loading, list } = this.state
      return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.welcomeText}>Records</Text>
         <Button
         title="Sign Out"
@@ -76,7 +76,7 @@ export default class RecordsScreen extends Component {
             timestamp={item.timestamp} />
           }
         />}
-      </View>
+      </SafeAreaView>
     );
   }
 }
