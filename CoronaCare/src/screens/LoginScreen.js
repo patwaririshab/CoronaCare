@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, StyleSheet, Button, ImageBackground,SafeAreaView } from 'react-native';
+import { View, TextInput, Text, StyleSheet, ImageBackground,SafeAreaView, KeyboardAvoidingView } from 'react-native';
+import { Button } from 'react-native-elements';
 import { Navigation } from "react-native-navigation"
 import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
@@ -46,12 +47,11 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <SafeAreaView style ={styles.bkgrdContainer}>
+            <View style ={styles.bkgrdContainer}>
                 <ImageBackground source = {require('../assets/images/bkgrd.png')} style ={styles.bkgrdImage}>
-                <View style={styles.outsideWrapper}>
+                <KeyboardAvoidingView style={styles.inputContainer}>
                     <Text style={styles.welcomeText}>Log in</Text>
                     <Text style={styles.detailsText}>Log in to your myaces.nus.edu account.</Text>
-                    <View style={styles.inputContainer}>
                         <TextInput
                             style={styles.inputText}
                             placeholder="Username"
@@ -63,27 +63,39 @@ export default class LoginScreen extends Component {
                             autoCapitalize="none"
                             secureTextEntry={true}
                             onChangeText={newPass => this.setState({ password: newPass })} />
-                        <Button
-                            onPress={this.sinInUser.bind(this)}
-                            title="Submit">
-                            Submit
-                        </Button>
-                        <Button
-                            title="Google Sign-In"
-                            onPress={() => onGoogleButtonPress()}
-                        />
-                    </View>
-                </View>
+                            <Button
+                                onPress={this.sinInUser.bind(this)}
+                                title="Submit"
+                                type= "clear"
+                                buttonStyle={styles.buttonStyle}
+                                titleStyle={{color: "white"}}
+                            />
+                            <Button
+                                title="Google Sign-In"
+                                type= "outline"
+                                buttonStyle={styles.buttonStyle}
+                                titleStyle={{color: "white"}}
+                                onPress={() => onGoogleButtonPress()}
+                            />
+                </KeyboardAvoidingView>
                 </ImageBackground>
-           
-            </SafeAreaView>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-
-
+    inputContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonStyle: {
+        borderColor: "white",
+        borderWidth: 1,
+        margin: 10,
+        width: 150
+    },
     bkgrdImage: {
             flex: 1,
             resizeMode: "cover",

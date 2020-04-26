@@ -32,9 +32,6 @@ const NavigationTabInitialiser = () => {
                         text: 'Capture',
                         icon: require('../assets/images/outline_camera_alt_black_18dp.png'),
                         testID: 'THIRD_TAB_BAR_BUTTON',
-                        dotIndicator: {
-                          visible: true
-                        }
                     },
                 },
             },
@@ -49,7 +46,7 @@ const NavigationTabInitialiser = () => {
                 topBar: { visible: false},
                 bottomTab: {
                   text: 'Records',
-                  icon: require('../assets/images/thermometer.png'),
+                  icon: require('../assets/images/thermometer_PNG28.png'),
                   testID: 'FIRST_TAB_BAR_BUTTON',
                 },
               },
