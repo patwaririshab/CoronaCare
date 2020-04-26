@@ -15,6 +15,11 @@ const NavigationTabInitialiser = () => {
                     passProps: {
                       text: 'This is tab 3',
                     },
+                    options: {
+                      topBar: {
+                        visible: false
+                      }
+                    }
                   },
                 }],
                 options: {
