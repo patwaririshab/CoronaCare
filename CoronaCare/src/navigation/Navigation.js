@@ -17,8 +17,5 @@ export function registerScreens(){
     Navigation.registerComponent(`navigation.CoronaCare.LoginScreen`, () => LoginScreen);
     Navigation.registerComponent(`navigation.CoronaCare.AfterLogin`, () => AfterLogin);
     Navigation.registerComponent(`navigation.CoronaCare.CameraScreen`, () => CameraScreen);
-<<<<<<< HEAD
-=======
     Navigation.registerComponent(`navigation.CoronaCare.TempConfirmation`, () => TempConfirmation);
->>>>>>> master
 }

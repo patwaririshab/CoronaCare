@@ -1,28 +1,59 @@
-import React, { Component } from 'react';
-import { View, TextInput, Text, StyleSheet, Button, Image } from 'react-native';
+import React, { Component, useState } from 'react';
+import { View, KeyboardAvoidingView, TextInput, Text, StyleSheet, Button, Image, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {uploadImage, uploadEntry} from '../services/FirebaseImageUpload'
+import {FullDateLocalTimeZone, CurrentTimeLocalTimeZone} from '../services/CurrentDateGenerator'
 
+export default TempConfirmation =(props) => {
+        const { data: {uri} } = props
+        const [input, setInput] = useState(0)
+        const [uploadState, setUploadState] = useState('Confirm')
 
-export default class LoginScreen extends Component {
-     render() {
+       const uploadRecord = async () => {
+            if (!parseFloat(input)){
+                setUploadState('Confirm')
+                alert('You have entered an invalid temperature')
+                return
+            }
+            // const timeStamp = FullDateLocalTimeZone() + CurrentTimeLocalTimeZone()
+            setUploadState('uploading')
+            await uploadImage(props.data)
+            .then((res) => {
+                const { url, timestamp} = res
+                uploadEntry(url,input, timestamp)
+                alert('Your record has been successfully uploaded')
+            })
+            .catch((error) => {
+                setUploadState('Confirm')
+                alert(error)
+            })
+            setUploadState('completed')
+        }
+
         return (
             <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-                <View style={styles.outsideWrapper}>
-                <Image source={require('../assets/images/Thermometer.jpg')} />
-                <View style ={styles.tempInput}>
+                <KeyboardAvoidingView style={styles.outsideWrapper} behavior={Platform.OS == "ios" ? "padding" : "height"} 
+                keyboardVerticalOffset = {50 + 20} // adjust the value here if you need more padding
+                >
+                <Image source={{uri: uri, width: 350, height: 450}} />
+                <View style ={styles.tempInput} >
                 <TextInput
                     style={styles.inputText}
                     placeholder="Insert Temperature"
+                    onChangeText={newText => setInput(newText)}
                     autoCapitalize="none"
+                    
                 />
                 <Text style={{textAlignVertical: "center", fontSize: 25, paddingLeft:8, color:"white" }}>°C</Text>
                 </View>
-                    <Button title = "Confirm"></Button>
+                    <Button 
+                        title = {uploadState}
+                        onPress={uploadRecord}
+                    />
 
-                </View>
+                </KeyboardAvoidingView>
             </LinearGradient>
         );
-    }
 }
 
 const styles = StyleSheet.create({
@@ -32,10 +63,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     outsideWrapper: {
-
         padding: 50,
         alignItems: 'center',
-        marginTop: 150
 
     },
     inputText: {
