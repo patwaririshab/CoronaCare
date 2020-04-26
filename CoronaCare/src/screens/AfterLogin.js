@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, StyleSheet, SafeAreaView, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, ImageBackground} from 'react-native';
 import {Button,backgroundColor} from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 
@@ -30,21 +30,16 @@ export default class Home extends Component {
             <View style ={styles.bkgrdContainer}>
                 <ImageBackground source = {require('../assets/images/bkgrd2.png')} style ={styles.bkgrdImage}>
                 <View style = {styles.outsideWrapper}>
-                <View style={styles.tempButton}>    
-                  <Button 
-                  title = "Capture Temperature"
-                  type = "solid"             
-                  onPress = {this.changeToCameraScreen.bind(this)}
-                  />
-                </View>
-
-                <View style = {styles.tempButton}>
-                  <Button 
-                  title = "View Records"
-                  type = "solid"
-                  onPress = {this.changeToCameraScreen.bind(this)}
-                  />
-                </View>
+                    <Text style={styles.paragraph}>
+                        Snap a picture of your temperature reading and upload to our portal
+                    </Text>
+                    <View style={styles.tempButton}>    
+                    <Button 
+                    title = "Capture Temperature"
+                    type = "solid"             
+                    onPress = {this.changeToCameraScreen.bind(this)}
+                    />
+                    </View>
                 </View>
                  </ImageBackground>
             </View>
@@ -68,8 +63,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     
     },
-
     tempButton: {
         marginTop: 20, marginBottom: 20, 
-    }
+    },
+    paragraph: {
+        justifyContent: "center",
+        color: "white",
+        textAlign: "center",
+        fontWeight: "bold",
+        fontSize: 20,
+        padding: 50
+      }
 });

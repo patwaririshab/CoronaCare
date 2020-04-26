@@ -33,10 +33,15 @@ export default class RecordsScreen extends Component {
   fetchFlatListData = () => {
       this.setState({loading: true})
       getData().then(result => {
-      console.warn("THIS IS WORKING", result)
       this.setState({list: result})
       this.setState({loading: false})
     })
+  }
+
+  getAmOrPm = (firebaseTimestamp) => {
+    const date = firebaseTimestamp.toDate()
+    if (date.getHours() > 11) {return "PM"}
+    return "AM"
   }
 
   render() {
@@ -71,7 +76,7 @@ export default class RecordsScreen extends Component {
           data={list}
           renderItem={({ item }) => <RecordEntry
             image={item.imageUrl}
-            AMPM="AM"
+            AMPM={this.getAmOrPm(item.firebaseTimestamp)}
             temperature={item.temperature}
             timestamp={item.timestamp} />
           }

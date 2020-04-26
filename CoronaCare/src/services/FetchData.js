@@ -10,16 +10,16 @@ export async function getData() {
     .where('userEmail', '==', currentUserEmail)
     .get()
     .then(querySnapshot => {
-        console.log('Total Records', querySnapshot.size)
         querySnapshot.forEach(doc => {
-            const { imageUrl, userEmail, temperature, timestamp} = doc.data()
             list.push({
                 imageUrl: doc.get('imageUrl'),
                 temperature: doc.get('temperature'),
                 userEmail: doc.get('userEmail'),
-                timestamp: doc.get('timestamp')
+                timestamp: doc.get('timestamp'),
+                firebaseTimestamp: doc.get('firebaseTimestamp')
             })
         })
     })
+    list.sort((a,b) => {return a.firebaseTimestamp.toMillis() < b.firebaseTimestamp.toMillis()})
     return list
 }
