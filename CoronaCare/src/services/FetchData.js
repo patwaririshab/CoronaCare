@@ -6,6 +6,7 @@ export async function getData() {
     const currentUserEmail = auth().currentUser.email;
     const list = []
     await firestore()
+    const currentUserEmail = auth().currentUser.email
     .collection('records')
     .where('userEmail', '==', currentUserEmail)
     .get()

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, StyleSheet, Button } from 'react-native';
+import { View, TextInput, Text, StyleSheet, Button, ImageBackground,SafeAreaView } from 'react-native';
 import { Navigation } from "react-native-navigation"
 import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
@@ -46,7 +46,8 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+            <SafeAreaView style ={styles.bkgrdContainer}>
+                <ImageBackground source = {require('../assets/images/bkgrd.png')} style ={styles.bkgrdImage}>
                 <View style={styles.outsideWrapper}>
                     <Text style={styles.welcomeText}>Log in</Text>
                     <Text style={styles.detailsText}>Log in to your myaces.nus.edu account.</Text>
@@ -73,7 +74,9 @@ export default class LoginScreen extends Component {
                         />
                     </View>
                 </View>
-            </LinearGradient>
+                </ImageBackground>
+           
+            </SafeAreaView>
         );
     }
 }
@@ -81,14 +84,20 @@ export default class LoginScreen extends Component {
 const styles = StyleSheet.create({
 
 
-    linearGradient: {
+    bkgrdImage: {
+            flex: 1,
+            resizeMode: "cover",
+            justifyContent: "center"
+    },
+    bkgrdContainer: {
         flex: 1,
+        flexDirection: "column"
     },
     outsideWrapper: {
 
         padding: 50,
         alignItems: 'center',
-        marginTop: 150
+        marginTop: 50
 
     },
     welcomeText: {

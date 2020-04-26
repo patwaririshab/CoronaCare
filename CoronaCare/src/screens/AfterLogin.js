@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
+import {View, StyleSheet, SafeAreaView, ImageBackground} from 'react-native';
+import {Button,backgroundColor} from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 
 export default class Home extends Component {
@@ -26,11 +26,13 @@ export default class Home extends Component {
 
     render() {
         return (
-             <View style = {styles.outsideWrapper}>
+            <SafeAreaView style ={styles.bkgrdContainer}>
+                <ImageBackground source = {require('../assets/images/bkgrd2.png')} style ={styles.bkgrdImage}>
+                <View style = {styles.outsideWrapper}>
                 <View style={styles.tempButton}>    
                   <Button 
                   title = "Capture Temperature"
-                  type = "outline"             
+                  type = "solid"             
                   onPress = {this.changeToCameraScreen.bind(this)}
                   />
                 </View>
@@ -38,20 +40,29 @@ export default class Home extends Component {
                 <View style = {styles.tempButton}>
                   <Button 
                   title = "View Records"
-                  type = "outline"
-                  color = "black"
+                  type = "solid"
                   onPress = {this.changeToCameraScreen.bind(this)}
                   />
                 </View>
-            </View>
+                </View>
+                 </ImageBackground>
+            </SafeAreaView>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    outsideWrapper: {
-        display: "flex",
+    bkgrdImage: {
         flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+    },
+        bkgrdContainer: {
+        flex: 1,
+        flexDirection: "column"
+    },
+    outsideWrapper: {
+
         alignItems: 'center',
         justifyContent: 'center',
     

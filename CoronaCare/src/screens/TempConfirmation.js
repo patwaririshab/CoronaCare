@@ -44,7 +44,7 @@ export default TempConfirmation =(props) => {
                     autoCapitalize="none"
                     
                 />
-                <Text style={{textAlignVertical: "center", fontSize: 25, paddingLeft:8, color:"white" }}>°C</Text>
+                <Text style={{textAlignVertical: "center", fontSize: 25, paddingLeft:8, color:"white"}}>°C</Text>
                 </View>
                     <Button 
                         title = {uploadState}
