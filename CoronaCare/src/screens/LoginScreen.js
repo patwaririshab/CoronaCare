@@ -9,7 +9,7 @@ import onGoogleButtonPress from '../services/GoogleSignin'
 export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
-        state = {
+        this.state = {
             username: "",
             password: ""
         }
@@ -34,14 +34,16 @@ export default class LoginScreen extends Component {
                 this.changeScreen.bind(this)
             })
             .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
+                switch (error) {
+                    case (error.code === 'auth/email-already-in-use'): 
+                        alert('That email address is already in use!');
+                        break;
+                    case (error.code === 'auth/invalid-email'):
+                        alert('That email address is invalid!');
+                        break;
+                    default:
+                        alert('Ask your administrator for an account, or sign-in with Google')
                 }
-
-                if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                }
-                console.error(error);
             });
     }
 
