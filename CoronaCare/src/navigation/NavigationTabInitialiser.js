@@ -16,9 +16,7 @@ const NavigationTabInitialiser = () => {
                       text: 'This is tab 3',
                     },
                     options: {
-                      topBar: {
-                        visible: false
-                      }
+                      topBar: {visible: false }
                     }
                   },
                 }],

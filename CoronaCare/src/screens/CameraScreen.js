@@ -19,6 +19,7 @@ export default class CameraScreen extends PureComponent {
           },
           options: {
             topBar: {
+              visible: true,
               title: {
                 text: 'Confirm Temperature'
               }

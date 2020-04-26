@@ -15,6 +15,7 @@ export default class Home extends Component {
                 name: 'navigation.CoronaCare.CameraScreen',
                 options: {
                     topBar: {
+                        visible: true,
                       title: {
                         text: 'Take Photo'
                       }
