@@ -27,7 +27,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <SafeAreaView style ={styles.bkgrdContainer}>
+            <View style ={styles.bkgrdContainer}>
                 <ImageBackground source = {require('../assets/images/bkgrd2.png')} style ={styles.bkgrdImage}>
                 <View style = {styles.outsideWrapper}>
                 <View style={styles.tempButton}>    
@@ -47,7 +47,7 @@ export default class Home extends Component {
                 </View>
                 </View>
                  </ImageBackground>
-            </SafeAreaView>
+            </View>
         );
     }
 }

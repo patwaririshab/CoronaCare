@@ -6,6 +6,12 @@ const NavigationTabInitialiser = () => {
   Navigation.setRoot({
     root: {
       bottomTabs: {
+        options: {
+          bottomTabs: {
+            titleDisplayMode: "alwaysShow",
+            barStyle: "default"
+          }
+        },
         children: [{
             stack: {
                 id: 'AFTERLOGIN_STACK',
