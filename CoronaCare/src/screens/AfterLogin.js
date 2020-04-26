@@ -12,8 +12,15 @@ export default class Home extends Component {
     changeToCameraScreen = () => {
         Navigation.push("AFTERLOGIN_STACK", {
             component: {
-                name: 'navigation.CoronaCare.CameraScreen'
-              }
+                name: 'navigation.CoronaCare.CameraScreen',
+                options: {
+                    topBar: {
+                      title: {
+                        text: 'Take Photo'
+                      }
+                    }
+                  }
+              },
         })
     }
 

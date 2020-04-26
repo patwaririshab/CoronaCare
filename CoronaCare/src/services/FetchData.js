@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-const currentUserEmail = auth().currentUser.email;
 
-export async function getData(list) {
+export async function getData() {
+    const currentUserEmail = auth().currentUser.email;
+    const list = []
     await firestore()
     .collection('records')
     .where('userEmail', '==', currentUserEmail)
@@ -20,4 +21,5 @@ export async function getData(list) {
             })
         })
     })
+    return list
 }

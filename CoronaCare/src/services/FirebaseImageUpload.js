@@ -14,7 +14,8 @@ export async function uploadImage(data) {
     const ref = await firebase.storage().ref(`${userEmail}/${currentDate}/${currentTime}.jpg`)
     await ref.putFile(pathToFile)
     const url = await ref.getDownloadURL()
-    return url
+    const timestamp = `${currentDate} ${currentTime}`
+    return {url, timestamp}
 }
 
 

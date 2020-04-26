@@ -1,11 +1,31 @@
 import React, { PureComponent } from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { AppRegistry, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
-import {uploadImage, uploadEntry} from '../services/FirebaseImageUpload'
+import {Navigation} from 'react-native-navigation';
 
 export default class CameraScreen extends PureComponent {
   state = {
-    loading: false
+    loading: false,
+    snapped: false,
+    data: []
+  }
+
+  changeToTemperatureConfirmationScreen = (data) => {
+    Navigation.push("AFTERLOGIN_STACK", {
+      component: {
+          name: 'navigation.CoronaCare.TempConfirmation',
+          passProps: {
+            data: data,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'Confirm Temperature'
+              }
+            }
+          }
+        },
+  })
   }
 
   takePicture = async() => {
@@ -13,18 +33,14 @@ export default class CameraScreen extends PureComponent {
       this.setState({loading: true})
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      await uploadImage(data)
-      .then((downloadUrl) => {
-        uploadEntry(downloadUrl)
-        this.setState({loading:false})
-      })
-      .catch((error) => alert(error))
+      console.log(data.uri)
+      this.changeToTemperatureConfirmationScreen(data)
+      this.setState({loading: false})
   };
 }
 
   render() {
-    return (
-      <View style={styles.container}>
+    return ( <View style={styles.container}>
         <RNCamera
           ref={ref => {
             this.camera = ref;

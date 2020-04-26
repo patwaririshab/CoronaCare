@@ -1,30 +1,48 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, Text, FlatList, Button, StyleSheet, Image, Dimensions } from 'react-native';
+import { SafeAreaView, View, Text, FlatList, Button, StyleSheet, Image, Dimensions } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
 import styles from '../styles/styles';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
 import {getData} from '../services/FetchData';
 
-var list = []
+const LoadingView = () => {
+  return (
+    <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Text h1 >
+        Loading
+      </Text>
+    </View>
+  )
+}
 
 export default class RecordsScreen extends Component {
   constructor(props) {
     super(props);
-    state = {
-      loading: false
+    this.state = {
+      loading: false,
+      list: []
     }
   }
-  componentWillMount(){
-    this.setState({loading:true})
-    getData(list)
-    this.setState({loading:false})
+
+  componentDidMount(){
+    this.fetchFlatListData()
+  }
+
+  fetchFlatListData = () => {
+      this.setState({loading: true})
+      getData().then(result => {
+      console.warn("THIS IS WORKING", result)
+      this.setState({list: result})
+      this.setState({loading: false})
+    })
   }
 
   render() {
-    return (
-      <View style={styles.container}>
+    const { loading, list } = this.state
+     return (
+      <SafeAreaView style={styles.container}>
         <Text style={styles.welcomeText}>Records</Text>
         <Button
         title="Sign Out"
@@ -44,13 +62,10 @@ export default class RecordsScreen extends Component {
       }/>
       <Button
         title="Refresh Page"
-        onPress={() => {
-          this.setState({loading: true})
-          list = []
-          getData(list)
-          this.setState({loading:false})
-        }}
+        onPress={this.fetchFlatListData}
       />
+      {loading ? 
+      <LoadingView/> :
         <FlatList
           keyExtractor={(item) => item.key}
           data={list}
@@ -60,8 +75,8 @@ export default class RecordsScreen extends Component {
             temperature={item.temperature}
             timestamp={item.timestamp} />
           }
-        />
-      </View>
+        />}
+      </SafeAreaView>
     );
   }
 }
