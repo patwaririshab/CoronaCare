@@ -4,10 +4,11 @@ import firestore from '@react-native-firebase/firestore';
 
 export async function getData() {
     const currentUserEmail = auth().currentUser.email;
+    const currentUserUid = auth().currentUser.uid;
     const list = []
     await firestore()
     .collection('users')
-    .doc(`${currentUserEmail}`)
+    .doc(`${currentUserUid}`)
     .collection('records')
     .get()
     .then(querySnapshot => {
