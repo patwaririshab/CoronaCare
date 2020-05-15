@@ -30,8 +30,8 @@ export default class LoginScreen extends Component {
         auth()
             .signInWithEmailAndPassword(this.state.username, this.state.password)
             .then(() => {
-                console.log('User account created & signed in!');
-                this.changeScreen.bind(this)
+                console.log('User account signed in!');
+                this.changeScreen()
             })
             .catch(error => {
                 switch (error) {
