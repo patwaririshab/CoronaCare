@@ -9,7 +9,6 @@ export async function getData() {
     .collection('users')
     .doc(`${currentUserEmail}`)
     .collection('records')
-    .where('userEmail', '==', currentUserEmail)
     .get()
     .then(querySnapshot => {
         querySnapshot.forEach(doc => {
