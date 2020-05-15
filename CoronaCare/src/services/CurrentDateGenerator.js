@@ -1,5 +1,9 @@
+import firestore from '@react-native-firebase/firestore'
+
+ var dateGenerator = new Date;
+
 export const FullDateLocalTimeZone = () => {
-    const dateGenerator = new Date()
+    dateGenerator = new Date()
     const date = dateGenerator.getDate()
     const month = dateGenerator.getMonth() + 1 // Month returns 0 - 11, hence +1
     const year = dateGenerator.getFullYear()
@@ -7,11 +11,16 @@ export const FullDateLocalTimeZone = () => {
 }
 
 export const CurrentTimeLocalTimeZone = () => {
-    const dateGenerator = new Date()
     const hours = dateGenerator.getHours()
     const minutes = dateGenerator.getMinutes()
     const seconds = dateGenerator.getSeconds()
     return `${hours}:${minutes}:${seconds}`
+}
+
+export const CreateFirebaseTimestamp = () => {
+    const fireStoreTimeStamp = firestore.Timestamp.fromDate(dateGenerator)
+    console.log("Date: " + fireStoreTimeStamp)
+    return fireStoreTimeStamp
 }
 
 

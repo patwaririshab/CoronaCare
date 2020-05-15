@@ -34,7 +34,6 @@ export default class CameraScreen extends PureComponent {
       this.setState({loading: true})
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      console.log(data.uri)
       this.changeToTemperatureConfirmationScreen(data)
       this.setState({loading: false})
   };
