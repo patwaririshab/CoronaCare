@@ -8,6 +8,7 @@ import AfterLogin from '../screens/AfterLogin'
 import CameraScreen from '../screens/CameraScreen'
 import NavigationTabInitialiser from './NavigationTabInitialiser'
 import TempConfirmation from '../screens/TempConfirmation'
+import SignUpScreen from '../screens/SignUpScreen'
 
 export function registerScreens(){
     Navigation.registerComponent(`navigation.CoronaCare.App`, () => App)
@@ -18,4 +19,5 @@ export function registerScreens(){
     Navigation.registerComponent(`navigation.CoronaCare.AfterLogin`, () => AfterLogin);
     Navigation.registerComponent(`navigation.CoronaCare.CameraScreen`, () => CameraScreen);
     Navigation.registerComponent(`navigation.CoronaCare.TempConfirmation`, () => TempConfirmation);
+    Navigation.registerComponent(`navigation.CoronaCare.SignUpScreen`,() => SignUpScreen)
 }
