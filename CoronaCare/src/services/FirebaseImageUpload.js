@@ -23,7 +23,7 @@ export async function uploadImage(data) {
 
 export function uploadEntry(imageUrl, temperature, timestamp, firebaseTimestamp){
     const userEmail = auth().currentUser.email
-    let docRef = firestore().collection('records')
+    let docRef = firestore().collection('users').doc(`${userEmail}`).collection('records')
    docRef
    .add({
         temperature: temperature,
