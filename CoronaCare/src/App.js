@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
-import LoginScreen from './screens/LoginScreen';
+import LoginInitialiser from './navigation/LoginInitialiser'
 import NavigationTabInitialiser from './navigation/NavigationTabInitialiser';
 import {GoogleSignIn} from '@react-native-community/google-signin';
 
@@ -31,7 +31,7 @@ export default function App() {
   }
 
   if (!user) {
-    return <LoginScreen />;
+    return <LoginInitialiser/>;
   }
 
   return <NavigationTabInitialiser />;

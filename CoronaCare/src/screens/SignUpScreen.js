@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { View, TextInput, Text, StyleSheet, ImageBackground,SafeAreaView, KeyboardAvoidingView } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Navigation } from "react-native-navigation"
-import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
-import onGoogleButtonPress from '../services/GoogleSignin'
-import { GoogleSigninButton } from '@react-native-community/google-signin';
 
 export default class LoginScreen extends Component {
     constructor(props) {
@@ -26,12 +23,12 @@ export default class LoginScreen extends Component {
         });
     }
 
-    sinInUser = () => {
+    signUpUser = () => {
         console.log("Signing in" + this.state.username)
         auth()
-            .signInWithEmailAndPassword(this.state.username, this.state.password)
+            .createUserWithEmailAndPassword(this.state.username, this.state.password)
             .then(() => {
-                console.log('User account signed in!');
+                console.log('User has been signed up!');
                 this.changeScreen()
             })
             .catch(error => {
@@ -43,40 +40,9 @@ export default class LoginScreen extends Component {
                         alert('That email address is invalid!');
                         break;
                     default:
-                        alert('Ask your administrator for an account, or sign-in with Google')
+                        alert('Faled to sign up user successfully. Try again or contact your administrator')
                 }
             });
-    }
-
-    onSignUpPress = () => {
-        Navigation.push(`LOGIN_STACK`, {
-            component: {
-                name: `navigation.CoronaCare.SignUpScreen`,
-                options: {
-                    topBar: {
-                        visible: true,
-                        noBorder: true,
-                        // background: {
-                        //     color: '#ffffff00',
-                        //     translucent: true
-                        // },
-                        backButton: {
-                            color: '#147efb',
-                            showTitle: true,
-                            title: 'login screen'
-                        }
-                     }
-                }
-            }
-        })
-    }
-
-    signInWithGoogle = () => {
-            onGoogleButtonPress()
-            .then(() => this.changeScreen())
-            .catch(() => {
-                alert("Failed to sign in with google")
-            })
     }
 
     render() {
@@ -84,8 +50,8 @@ export default class LoginScreen extends Component {
             <View style ={styles.bkgrdContainer}>
                 <ImageBackground source = {require('../assets/images/bkgrd.png')} style ={styles.bkgrdImage}>
                 <KeyboardAvoidingView style={styles.inputContainer}>
-                    <Text style={styles.welcomeText}>Log in</Text>
-                    <Text style={styles.detailsText}>Log in to your myaces.nus.edu account.</Text>
+                    <Text style={styles.welcomeText}>Sign Up</Text>
+                    <Text style={styles.detailsText}>Sign up for a new account now.</Text>
                         <TextInput
                             style={styles.inputText}
                             placeholder="Username"
@@ -98,22 +64,11 @@ export default class LoginScreen extends Component {
                             secureTextEntry={true}
                             onChangeText={newPass => this.setState({ password: newPass })} />
                             <Button
-                                onPress={this.sinInUser.bind(this)}
+                                onPress={this.signUpUser.bind(this)}
                                 title="Submit"
                                 type= "clear"
                                 buttonStyle={styles.buttonStyle}
                                 titleStyle={{color: "white"}}
-                            />
-                            <Button
-                                title="Google Sign-In"
-                                type= "outline"
-                                buttonStyle={styles.buttonStyle}
-                                titleStyle={{color: "white"}}
-                                onPress={this.signInWithGoogle}
-                            />
-                            <Button 
-                                title="Sign Up User"
-                                onPress={this.onSignUpPress}
                             />
                 </KeyboardAvoidingView>
                 </ImageBackground>
