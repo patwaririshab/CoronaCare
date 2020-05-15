@@ -111,10 +111,10 @@ export default class LoginScreen extends Component {
                                 titleStyle={{color: "white"}}
                                 onPress={this.signInWithGoogle}
                             />
-                            <Button 
-                                title="Sign Up User"
+                            <Text 
                                 onPress={this.onSignUpPress}
-                            />
+                                style={{color: "white"}}
+                            >Sign up new user</Text>
                 </KeyboardAvoidingView>
                 </ImageBackground>
             </View>
