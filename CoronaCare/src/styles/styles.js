@@ -10,7 +10,7 @@ export default StyleSheet.create({
       textAlign: 'right',
     },
     Image: {
-      width:200,
+      width:150,
       height:100,
       margin:1,
       borderRadius: 7
