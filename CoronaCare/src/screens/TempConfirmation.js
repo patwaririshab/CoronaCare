@@ -17,6 +17,7 @@ export default TempConfirmation =(props) => {
                 alert('You have entered an invalid temperature')
                 return
             }
+
             // const timeStamp = FullDateLocalTimeZone() + CurrentTimeLocalTimeZone()
             setUploadState('uploading')
             await uploadImage(props.data)
@@ -33,6 +34,19 @@ export default TempConfirmation =(props) => {
             setUploadState('completed')
         }
 
+        const uploadPortal = () => {
+            Navigation.push('AFTERLOGIN_STACK', {
+                component: {
+                    name: "navigation.CoronaCare.WebViewScreen",
+                    options: {
+                        topBar: {
+                            visible: true
+                        }
+                    }
+                }
+            })
+        } 
+         
         return (
                 <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
                 <KeyboardAvoidingView style={styles.outsideWrapper} behavior={Platform.OS == "ios" ? "padding" : "height"} 
@@ -53,6 +67,10 @@ export default TempConfirmation =(props) => {
                         title = {uploadState}
                         onPress={uploadRecord}
                     />
+                <Button
+                    title = "Upload to portal"
+                    onPress={uploadPortal}
+                />
                 </KeyboardAvoidingView>
             </LinearGradient>
         );
