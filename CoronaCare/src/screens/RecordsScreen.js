@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, FlatList, StyleSheet, Image, Dimensions } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
 import { Button } from 'react-native-elements'
@@ -18,36 +18,27 @@ const LoadingView = () => {
   )
 }
 
-export default class RecordsScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      list: []
-    }
-  }
+const RecordsScreen = () => {
+  const [loading, setLoading] = useState(false)
+  const [list, setList] = useState([])
 
-  componentDidMount(){
-    this.fetchFlatListData()
-  }
-
-  fetchFlatListData = () => {
-      this.setState({loading: true})
-      getData().then(result => {
-      this.setState({list: result})
-      this.setState({loading: false})
+  const fetchFlatListData = () => {
+    setLoading(true)
+    getData()
+    .then(result => {
+      setList(result)
+      setLoading(false)
     })
   }
 
+  useEffect(() => fetchFlatListData() , [])
   getAmOrPm = (firebaseTimestamp) => {
     const date = firebaseTimestamp.toDate()
     if (date.getHours() > 11) {return "PM"}
     return "AM"
   }
 
-  render() {
-    const { loading, list } = this.state
-     return (
+  return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.welcomeText}>Records</Text>
         <Button
@@ -70,7 +61,7 @@ export default class RecordsScreen extends Component {
       <Button
         type= "clear"
         title="Refresh Page"
-        onPress={this.fetchFlatListData}
+        onPress={fetchFlatListData}
       />
       {loading ? 
       <LoadingView/> :
@@ -85,7 +76,7 @@ export default class RecordsScreen extends Component {
           }
         />}
       </SafeAreaView>
-    );
-  }
-}
+  )}
+
+  export default RecordsScreen
 
