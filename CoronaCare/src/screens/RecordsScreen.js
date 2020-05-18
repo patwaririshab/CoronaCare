@@ -7,6 +7,7 @@ import styles from '../styles/styles';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
 import {getData} from '../services/FetchData';
+import {SwipeListView} from 'react-native-swipe-list-view';
 
 const LoadingView = () => {
   return (
@@ -32,7 +33,7 @@ const RecordsScreen = () => {
   }
 
   useEffect(() => fetchFlatListData() , [])
-  getAmOrPm = (firebaseTimestamp) => {
+  const getAmOrPm = (firebaseTimestamp) => {
     const date = firebaseTimestamp.toDate()
     if (date.getHours() > 11) {return "PM"}
     return "AM"
@@ -65,15 +66,23 @@ const RecordsScreen = () => {
       />
       {loading ? 
       <LoadingView/> :
-        <FlatList
+        <SwipeListView
+          disableRightSwipe
+          friction={40}
           keyExtractor={(item) => item.key}
           data={list}
           renderItem={({ item }) => <RecordEntry
             image={item.imageUrl}
-            AMPM={this.getAmOrPm(item.firebaseTimestamp)}
+            AMPM={getAmOrPm(item.firebaseTimestamp)}
             temperature={item.temperature}
-            timestamp={item.timestamp} />
+            timestamp={item.timestamp}
+            />
           }
+          renderHiddenItem={({ item }) => (
+          <View style={{ height: 140, display: 'flex', backgroundColor: '#ff0000',flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
+              <Text style={{fontSize: 30, paddingEnd: 10}}>Delete</Text>
+          </View>
+          )}
         />}
       </SafeAreaView>
   )}
