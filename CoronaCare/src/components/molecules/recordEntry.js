@@ -5,7 +5,7 @@ import styles from '../../styles/styles';
 const SwitchEntryBasedOnTemperature = (temperature) => {
   const tempFloat = parseFloat(temperature);
   if (tempFloat > 37.5) {
-    return '#ff575779';
+    return '#ff5757';
   }
   if (tempFloat > 37.0) {
     return '#ffe057';

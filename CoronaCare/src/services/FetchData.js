@@ -14,6 +14,7 @@ export async function getData() {
     .then(querySnapshot => {
         querySnapshot.forEach(doc => {
             list.push({
+                id: doc.id,
                 imageUrl: doc.get('imageUrl'),
                 temperature: doc.get('temperature'),
                 userEmail: doc.get('userEmail'),
