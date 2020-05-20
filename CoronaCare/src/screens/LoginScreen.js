@@ -130,7 +130,8 @@ export default class LoginScreen extends Component {
                 Forgot Password
               </Text>
             </View>
-            <View>
+          </KeyboardAvoidingView>
+          <View style={{ alignItems: 'center'}}>
               <Image
                 source={require('../assets/images/loginDivider.png')}
                 containerStyle={{
@@ -155,7 +156,6 @@ export default class LoginScreen extends Component {
                 onPress={this.onSignUpPress}
               />
             </View>
-          </KeyboardAvoidingView>
         </ImageBackground>
       </View>
     );
