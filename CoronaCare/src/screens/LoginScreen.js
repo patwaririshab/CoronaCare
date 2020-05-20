@@ -70,7 +70,7 @@ export default class LoginScreen extends Component {
             noBorder: true,
             // background: {
             //     color: '#ffffff00',
-            //     translucent: true
+            //     translucent: false
             // },
             backButton: {
               color: '#147efb',
@@ -93,7 +93,7 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <View style={styles.bkgrdContainer}>
+      <SafeAreaView style={styles.bkgrdContainer}>
         <ImageBackground
           source={require('../assets/images/bkgrd.png')}
           style={styles.bkgrdImage}>
@@ -157,7 +157,7 @@ export default class LoginScreen extends Component {
               />
             </View>
         </ImageBackground>
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -167,8 +167,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: Dimensions.get('window').height * 0.2,
-  },
+    marginTop: Dimensions.get('window').height * 0.25,
+    },
   topViewController: {
     flex: 1,
     justifyContent: 'flex-start',
@@ -183,9 +183,8 @@ const styles = StyleSheet.create({
   },
   bkgrdImage: {
     flex: 1,
-    resizeMode: 'cover',
+    resizeMode: "cover",
     justifyContent: 'center',
-    marginTop: Dimensions.get('window').height * 0.05,
   },
   bkgrdContainer: {
     flex: 1,
