@@ -67,6 +67,22 @@
 		54EA46B517F6FC0A916C0DA9 /* Pods-CoronaCare-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaCare-tvOS.release.xcconfig"; path = "Target Support Files/Pods-CoronaCare-tvOS/Pods-CoronaCare-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		82BE269220CB7531C4E0DA43 /* libPods-CoronaCare-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoronaCare-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB99D6A2ADA8D01EC95FB5C /* Pods-CoronaCare-CoronaCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaCare-CoronaCareTests.release.xcconfig"; path = "Target Support Files/Pods-CoronaCare-CoronaCareTests/Pods-CoronaCare-CoronaCareTests.release.xcconfig"; sourceTree = "<group>"; };
+		C3A8D18A24758AD200F47437 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		C3A8D18B24758AD200F47437 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		C3A8D18C24758AD200F47437 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		C3A8D18D24758AD200F47437 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		C3A8D18E24758AD200F47437 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		C3A8D18F24758AD200F47437 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		C3A8D19024758AD200F47437 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		C3A8D19124758AD200F47437 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		C3A8D19224758AD200F47437 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		C3A8D19324758AD200F47437 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		C3A8D19424758AD200F47437 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		C3A8D19524758AD200F47437 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		C3A8D19624758AD200F47437 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		C3A8D19724758AD300F47437 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		C3A8D19824758AD300F47437 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		C3A8D19924758AD300F47437 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		C3F149BF244E17C500278C2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "CoronaCare/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0855F73BD5649897A2ECF37 /* Pods-CoronaCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaCare.debug.xcconfig"; path = "Target Support Files/Pods-CoronaCare/Pods-CoronaCare.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -180,6 +196,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				C3A8D18924758AD200F47437 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* CoronaCare */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CoronaCareTests */,
@@ -201,6 +218,30 @@
 				2D02E4901E0B4A5D006451C7 /* CoronaCare-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C3A8D18924758AD200F47437 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C3A8D18A24758AD200F47437 /* Fontisto.ttf */,
+				C3A8D18B24758AD200F47437 /* Octicons.ttf */,
+				C3A8D18C24758AD200F47437 /* Feather.ttf */,
+				C3A8D18D24758AD200F47437 /* Entypo.ttf */,
+				C3A8D18E24758AD200F47437 /* FontAwesome5_Brands.ttf */,
+				C3A8D18F24758AD200F47437 /* MaterialCommunityIcons.ttf */,
+				C3A8D19024758AD200F47437 /* AntDesign.ttf */,
+				C3A8D19124758AD200F47437 /* Foundation.ttf */,
+				C3A8D19224758AD200F47437 /* Ionicons.ttf */,
+				C3A8D19324758AD200F47437 /* FontAwesome5_Solid.ttf */,
+				C3A8D19424758AD200F47437 /* FontAwesome5_Regular.ttf */,
+				C3A8D19524758AD200F47437 /* FontAwesome.ttf */,
+				C3A8D19624758AD200F47437 /* Zocial.ttf */,
+				C3A8D19724758AD300F47437 /* EvilIcons.ttf */,
+				C3A8D19824758AD300F47437 /* SimpleLineIcons.ttf */,
+				C3A8D19924758AD300F47437 /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
