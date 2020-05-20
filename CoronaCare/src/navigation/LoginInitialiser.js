@@ -12,6 +12,7 @@ const LoginInitialiser = () => {
               name: 'navigation.CoronaCare.LoginScreen',
               options: {
                 topBar: {visible: false},
+                statusBar: {visible: false}
               },
             },
           },

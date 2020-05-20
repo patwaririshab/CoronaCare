@@ -78,6 +78,7 @@ export default class LoginScreen extends Component {
               title: 'login screen',
             },
           },
+          statusBar: {visible: false}
         },
       },
     });
