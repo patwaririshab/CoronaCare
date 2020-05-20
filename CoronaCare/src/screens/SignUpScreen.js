@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
   Dimensions,
+  Alert,
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import {Navigation} from 'react-native-navigation';
@@ -24,6 +25,7 @@ export default class LoginScreen extends Component {
   }
 
   changeScreen = () => {
+    console.log('WORKING');
     Navigation.setRoot({
       root: {
         component: {
@@ -38,8 +40,17 @@ export default class LoginScreen extends Component {
     auth()
       .createUserWithEmailAndPassword(this.state.username, this.state.password)
       .then(() => {
-        console.log('User has been signed up!');
-        this.changeScreen();
+        Alert.alert(
+          '',
+          'You have been successfully signed up',
+          [
+            {
+              text: 'Continue',
+              onPress: this.changeScreen,
+            },
+          ],
+          {cancelable: false},
+        );
       })
       .catch((error) => {
         switch (error) {
@@ -59,39 +70,39 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-        <ImageBackground
-          source={require('../assets/images/bkgrd.png')}
-          style={styles.bkgrdImage}>
-          <KeyboardAvoidingView style={styles.inputContainer} behavior={"padding"}>
-              <Text style={styles.detailsText}>
-                Sign up for a new account now.
-              </Text>
-              <Input
-                containerStyle={styles.inputContainerStyle}
-                placeholder="Username"
-                leftIcon={{type: 'font-awesome', name: 'user'}}
-                leftIconContainerStyle={{marginRight: 10}}
-                autoCapitalize="none"
-                onChangeText={(newText) => this.setState({username: newText})}
-              />
-              <Input
-                containerStyle={styles.inputContainerStyle}
-                placeholder="Password"
-                autoCapitalize="none"
-                secureTextEntry={true}
-                leftIcon={{type: 'font-awesome', name: 'lock'}}
-                leftIconContainerStyle={{marginRight: 10}}
-                onChangeText={(newPass) => this.setState({password: newPass})}
-              />
+      <ImageBackground
+        source={require('../assets/images/bkgrd.png')}
+        style={styles.bkgrdImage}>
+        <KeyboardAvoidingView
+          style={styles.inputContainer}
+          behavior={'padding'}>
+          <Text style={styles.detailsText}>Sign up for a new account now.</Text>
+          <Input
+            containerStyle={styles.inputContainerStyle}
+            placeholder="Username"
+            leftIcon={{type: 'font-awesome', name: 'user'}}
+            leftIconContainerStyle={{marginRight: 10}}
+            autoCapitalize="none"
+            onChangeText={(newText) => this.setState({username: newText})}
+          />
+          <Input
+            containerStyle={styles.inputContainerStyle}
+            placeholder="Password"
+            autoCapitalize="none"
+            secureTextEntry={true}
+            leftIcon={{type: 'font-awesome', name: 'lock'}}
+            leftIconContainerStyle={{marginRight: 10}}
+            onChangeText={(newPass) => this.setState({password: newPass})}
+          />
           <Button
-                onPress={this.signUpUser.bind(this)}
-                title="Submit"
-                type="solid"
-                buttonStyle={styles.buttonStyle}
-                titleStyle={{color: 'white', fontSize: 15}}
-        />
+            onPress={this.signUpUser.bind(this)}
+            title="Submit"
+            type="solid"
+            buttonStyle={styles.buttonStyle}
+            titleStyle={{color: 'white', fontSize: 15}}
+          />
         </KeyboardAvoidingView>
-        </ImageBackground>
+      </ImageBackground>
     );
   }
 }
@@ -114,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    resizeMode: "cover",
+    resizeMode: 'cover',
   },
   outsideWrapper: {
     padding: 50,
