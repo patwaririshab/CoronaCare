@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, { Component, useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, FlatList, StyleSheet, Image, Dimensions } from 'react-native';
+import { SafeAreaView, View, Text, FlatList, StyleSheet, Image, Dimensions, Alert } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
 import { Button } from 'react-native-elements'
 import styles from '../styles/styles';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
 import {getData} from '../services/FetchData';
+import {SwipeListView} from 'react-native-swipe-list-view';
+import { deleteRecord } from '../services/DeleteData';
 
 const LoadingView = () => {
   return (
@@ -31,8 +33,35 @@ const RecordsScreen = () => {
     })
   }
 
+  const onRightAction = async rowKey => {
+    const recordId = rowKey
+    Alert.alert(
+      'Warning',
+      'Are you sure you want to delete this record?',
+      [
+        {
+          text: 'Confirm',
+          onPress: async () => {
+            try{
+              deleteRecord(recordId);
+            }
+            catch (err) {
+              alert(`Failed to delete record with error: ${err}`)
+            }
+            fetchFlatListData()
+          }
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed')
+        }
+      ]
+    )
+   
+  }
+
   useEffect(() => fetchFlatListData() , [])
-  getAmOrPm = (firebaseTimestamp) => {
+  const getAmOrPm = (firebaseTimestamp) => {
     const date = firebaseTimestamp.toDate()
     if (date.getHours() > 11) {return "PM"}
     return "AM"
@@ -65,18 +94,31 @@ const RecordsScreen = () => {
       />
       {loading ? 
       <LoadingView/> :
-        <FlatList
-          keyExtractor={(item) => item.key}
+        <SwipeListView
+          useNativeDriver={true}
+          disableRightSwipe
+          keyExtractor={(item) => item.id}
           data={list}
+          friction={70}
+          rightOpenValue={-150}
+          previewOpenValue={-40}
+          previewOpenDelay={3000}
+          rightActivationValue={-Dimensions.get('window').width + 60}
+          onRightAction={onRightAction}
           renderItem={({ item }) => <RecordEntry
             image={item.imageUrl}
-            AMPM={this.getAmOrPm(item.firebaseTimestamp)}
+            AMPM={getAmOrPm(item.firebaseTimestamp)}
             temperature={item.temperature}
-            timestamp={item.timestamp} />
+            timestamp={item.timestamp}
+            />
           }
+          renderHiddenItem={({ item }) => (
+          <View style={{ height: 140, display: 'flex', backgroundColor: '#ff0000',flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
+              <Text style={{fontSize: 35, paddingEnd: 18}}>Swipe to Delete</Text>
+          </View>
+          )}
         />}
       </SafeAreaView>
   )}
 
   export default RecordsScreen
-
