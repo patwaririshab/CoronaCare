@@ -2,23 +2,26 @@ import React from 'react';
 import {Navigation} from 'react-native-navigation';
 
 const LoginInitialiser = () => {
-    Navigation.setRoot({
-        root: {
-        stack: {
-            id: 'LOGIN_STACK',
-          children: [{
-              component: {
-                name: 'navigation.CoronaCare.LoginScreen',
-                options: {
-                    topBar: {visible: false }
-                  }
+  Navigation.setRoot({
+    root: {
+      stack: {
+        id: 'LOGIN_STACK',
+        children: [
+          {
+            component: {
+              name: 'navigation.CoronaCare.LoginScreen',
+              options: {
+                topBar: {visible: false},
+                statusBar: {visible: false}
               },
-            }],
-        },
-    }
-    })
+            },
+          },
+        ],
+      },
+    },
+  });
 
-    return <></>
-}
+  return <></>;
+};
 
-export default LoginInitialiser
+export default LoginInitialiser;
