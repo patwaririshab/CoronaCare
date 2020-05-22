@@ -10,6 +10,7 @@ import {
 import {Button, ListItem} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
+import {DeleteAccount, DeleteAllRecords} from '../services/SettingsScreenServices';
 
 const signOutUser = () => {
   auth()
@@ -33,15 +34,21 @@ const currentUserEmail = () => {
 const list = [
   {
     title: 'Update Organisation URL',
+    onPress: () => console.log('Hello World'),
   },
   {
     title: 'Change Password',
+    onPress: () => console.log('Change Password'),
   },
   {
     title: 'Delete All Records',
+    onPress: () => DeleteAllRecords(),
+    color: 'red',
   },
   {
     title: 'Delete Account',
+    onPress: () => DeleteAccount(),
+    color: 'red',
   },
 ];
 
@@ -68,7 +75,7 @@ const SettingsScreen = () => {
             {list.map((l, i) => (
               <ListItem
                 title={l.title}
-                titleStyle={{fontSize: 20}}
+                titleStyle={{fontSize: 20, color: l.color}}
                 contentContainerStyle={{margin: 10}}
                 bottomDivider
                 containerStyle={styles.listItem}
@@ -79,10 +86,10 @@ const SettingsScreen = () => {
           </View>
           <View style={styles.buttonView}>
             <Button
-                onPress={signOutUser}
-                title="Sign Out"
-                type="solid"
-                buttonStyle={styles.buttonStyle}
+              onPress={signOutUser}
+              title="Sign Out"
+              type="solid"
+              buttonStyle={styles.buttonStyle}
             />
           </View>
         </View>
@@ -158,9 +165,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   buttonView: {
-      height: '20%',
-      flexDirection: 'column',
-      justifyContent: 'center',
+    height: '20%',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   listView: {
     height: '60%',
