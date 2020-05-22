@@ -67,7 +67,6 @@ const RecordsScreen = () => {
     if (date.getHours() > 11) {return 'PM';}
     return 'AM';
   };
-
   return (
       <SafeAreaView style={styles.container}>
         <ImageBackground
