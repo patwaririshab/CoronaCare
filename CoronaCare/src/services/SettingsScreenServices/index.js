@@ -2,18 +2,25 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import firebase from '@react-native-firebase/app';
-import functions from '@react-native-firebase/functions';
 import React from 'react';
-import Navigation from 'react-native-navigation';
-
-const currentUserUid = auth().currentUser.uid;
-const userEmail = auth().currentUser.email;
+import {Navigation} from 'react-native-navigation';
 
 export const DeleteAccount = async () => {
+  const currentUser = auth().currentUser;
   try {
-    DeleteAllRecords()
-      .then(auth().currentUser.delete())
-      .then(() => alert('Succesfully Delete User Account'));
+    await DeleteAllRecords();
+    currentUser
+      .delete()
+      .then(() => alert('Succesfully Delete User Account'))
+      .then(() => {
+        Navigation.setRoot({
+          root: {
+            component: {
+              name: 'navigation.CoronaCare.LoginScreen',
+            },
+          },
+        });
+      });
   } catch {
     (err) => alert('Failed to delete user. Contact Administrator.' + err);
   }
@@ -41,19 +48,10 @@ const deleteFolderContents = (path) => {
       console.log(error);
     });
 };
-// const deleteAtPath = async (path) => {
-//   var deleteFn = firebase.functions().httpsCallable('recursiveDelete');
-//   deleteFn({path: path})
-//     .then(function (result) {
-//       console.log('Delete success: ' + JSON.stringify(result));
-//     })
-//     .catch(function (err) {
-//       console.log('Delete failed, see console,');
-//       console.warn(err);
-//     });
-// };
 
 export const DeleteAllRecords = async () => {
+  const currentUserUid = auth().currentUser.uid;
+  const userEmail = auth().currentUser.email;
   const ref = storage().ref(`${userEmail}`);
   try {
     deleteFolderContents(ref.fullPath);
@@ -70,6 +68,9 @@ export const DeleteAllRecords = async () => {
         res.forEach((element) => {
           element.ref.delete();
         });
+      })
+      .then(() => {
+        firestore().collection('user').doc(`${currentUserUid}`).delete();
       })
       .finally(() => alert('All records have been successfully deleted'));
   } catch (error) {
