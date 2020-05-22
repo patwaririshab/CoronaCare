@@ -2,7 +2,6 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import firebase from '@react-native-firebase/app';
-import React from 'react';
 import {Navigation} from 'react-native-navigation';
 
 export const DeleteAccount = async () => {
