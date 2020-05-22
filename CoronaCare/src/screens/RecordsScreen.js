@@ -117,7 +117,7 @@ const RecordsScreen = () => {
           }
           renderHiddenItem={({ item }) => (
           <View style={{ height: 140, display: 'flex', backgroundColor: '#ff0000',flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
-              <Icon type="font-awesome" name="trash" color="#ffffff" style={{marginRight: 20}} size={40}/>
+              <Icon type="font-awesome" name="trash" color="#ffffff" containerStyle={{marginRight: 20}} size={40}/>
           </View>
           )}
         />}
