@@ -11,6 +11,7 @@ import {Button, ListItem} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
 import {DeleteAccount, DeleteAllRecords} from '../services/SettingsScreenServices';
+import { OrganisationName } from '../services/WebPortalLinks'
 
 const signOutUser = () => {
   auth()
@@ -66,7 +67,7 @@ const SettingsScreen = () => {
               <Text style={styles.accountText}>
                 Email: {currentUserEmail()}
               </Text>
-              <Text style={styles.accountText}>URL: myaces.html</Text>
+              <Text style={styles.accountText}>Organization: {OrganisationName === '' ? 'None Set': OrganisationName}</Text>
             </View>
           </View>
         </View>
