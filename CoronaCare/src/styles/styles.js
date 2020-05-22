@@ -29,7 +29,7 @@ export default StyleSheet.create({
     textAlign: 'right',
   },
   welcomeText: {
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     fontSize: 36,
     color: '#000000',
     padding: 20,

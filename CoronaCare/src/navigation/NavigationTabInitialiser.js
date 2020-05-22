@@ -39,9 +39,6 @@ const NavigationTabInitialiser = () => {
           {
             component: {
               name: 'navigation.CoronaCare.RecordsScreen',
-              passProps: {
-                text: 'This is tab 1',
-              },
               options: {
                 topBar: { visible: false},
                 bottomTab: {
@@ -52,6 +49,19 @@ const NavigationTabInitialiser = () => {
               },
             },
           },
+          {
+            component: {
+              name: 'navigation.CoronaCare.SettingsScreen',
+              options: {
+                topBar: { visible: false },
+                bottomTab: {
+                  text: 'Settings',
+                  icon: require('../assets/images/cog.png'),
+                }
+              }
+              
+            }
+          }
         ],
       },
     },

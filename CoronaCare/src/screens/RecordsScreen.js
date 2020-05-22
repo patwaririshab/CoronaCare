@@ -4,10 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, Dimensions, Alert, ImageBackground } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
-import { Button } from 'react-native-elements';
 import styles from '../styles/styles';
-import auth from '@react-native-firebase/auth';
-import {Navigation} from 'react-native-navigation';
 import {getData} from '../services/FetchData';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import { deleteRecord } from '../services/DeleteData';
@@ -75,23 +72,6 @@ const RecordsScreen = () => {
           source={require('../assets/images/bkgrdBlank.png')}
           style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center'}}>
         <Text style={styles.welcomeText}>Records</Text>
-        <Button
-        title="Sign Out"
-        type="clear"
-        onPress={() => {
-          auth()
-          .signOut()
-          .then(() => console.log('User signed out!'))
-          .then(() => {
-            Navigation.setRoot({
-            root: {
-              component: {
-                name: 'navigation.CoronaCare.App',
-              },
-            },
-          });});
-        }
-      }/>
       <Text style={{textAlign: 'center'}}>Pull down to refresh</Text>
       {loading ?
       <LoadingView/> :
