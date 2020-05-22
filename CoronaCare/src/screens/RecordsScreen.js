@@ -1,6 +1,8 @@
+/* eslint-disable no-alert */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
-import React, { Component, useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, FlatList, StyleSheet, Image, Dimensions, Alert, RefreshControl, ImageBackground } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, View, Text, Dimensions, Alert, ImageBackground } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
 import { Button } from 'react-native-elements';
 import styles from '../styles/styles';
@@ -99,7 +101,9 @@ const RecordsScreen = () => {
           keyExtractor={(item) => item.id}
           data={list}
           rightOpenValue={-80}
-          friction={50}
+          friction={70}
+          tension={50}
+          swipeToOpenPercent={50}
           rightActivationValue={-Dimensions.get('window').width * 0.75}
           onRightAction={onRightAction}
           onRefresh={fetchFlatListData}

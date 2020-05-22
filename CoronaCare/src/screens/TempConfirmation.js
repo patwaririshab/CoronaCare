@@ -1,25 +1,22 @@
-import React, {Component, useState} from 'react';
+/* eslint-disable no-alert */
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState} from 'react';
 import {
   View,
   KeyboardAvoidingView,
-  TextInput,
   Text,
   StyleSheet,
-  Button,
   Image,
   Platform,
-  SafeAreaView,
+  Dimensions,
   ImageBackground,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {uploadImage, uploadEntry} from '../services/FirebaseImageUpload';
 import {Navigation} from 'react-native-navigation';
-import {
-  FullDateLocalTimeZone,
-  CurrentTimeLocalTimeZone,
-  CreateFirebaseTimestamp,
-} from '../services/CurrentDateGenerator';
+import {CreateFirebaseTimestamp} from '../services/CurrentDateGenerator';
+import {Input, Button} from 'react-native-elements';
 
+// eslint-disable-next-line no-undef
 export default TempConfirmation = (props) => {
   const {
     data: {uri},
@@ -35,7 +32,6 @@ export default TempConfirmation = (props) => {
       return;
     }
 
-    // const timeStamp = FullDateLocalTimeZone() + CurrentTimeLocalTimeZone()
     setUploadState('uploading');
     await uploadImage(props.data)
       .then((res) => {
@@ -67,32 +63,36 @@ export default TempConfirmation = (props) => {
   return (
     <ImageBackground
       source={require('../assets/images/bkgrdBlank.png')}
-      style={{flex: 1, resizeMode: 'cover', justifyContent: 'center'}}>
+      style={{flex: 1, resizeMode: 'cover'}}>
       <KeyboardAvoidingView
         style={styles.outsideWrapper}
-        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={200 + 20} // adjust the value here if you need more padding
+        behavior={'position'}
+        keyboardVerticalOffset={80} // adjust the value here if you need more padding
       >
-        <Image source={{uri: uri, width: 350, height: 450}} />
-        <View style={styles.tempInput}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="Insert Temperature"
-            onChangeText={(newText) => setInput(newText)}
-            autoCapitalize="none"
-          />
-          <Text
-            style={{
-              textAlignVertical: 'center',
-              fontSize: 25,
-              paddingLeft: 8,
-              color: 'black',
-            }}>
-            °C
-          </Text>
+        <View style={styles.topView}>
+          <Image source={{uri: uri, width: 350, height: 450}} />
         </View>
-        <Button title={uploadState} onPress={uploadRecord} />
-        <Button title="Upload to portal" onPress={uploadPortal} />
+        <View style={styles.bottomView}>
+          <View style={styles.inputRow}>
+            <Input
+              containerStyle={styles.inputText}
+              placeholder="Insert Temperature"
+              onChangeText={(newText) => setInput(newText)}
+              autoCapitalize="none"
+            />
+            <Text style={styles.degree}>°C</Text>
+          </View>
+          <Button
+            title={uploadState}
+            onPress={uploadRecord}
+            buttonStyle={styles.buttonStyle}
+          />
+          <Button
+            title="Upload to portal"
+            onPress={uploadPortal}
+            buttonStyle={styles.buttonStyle}
+          />
+        </View>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -104,25 +104,44 @@ const styles = StyleSheet.create({
   },
   outsideWrapper: {
     flex: 1,
-    justifyContent: 'center',
-    padding: 50,
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   inputText: {
     fontWeight: '200',
     fontSize: 18,
     color: '#000000',
-    height: 40,
-    width: 175,
-    backgroundColor: 'rgba(255,255,255,0.7)',
-    marginTop: 10,
-    marginBottom: 10,
-    paddingLeft: 10,
     borderRadius: 6,
+    width: '60%',
   },
-
-  tempInput: {
+  buttonStyle: {
+    margin: Platform.OS === 'ios' ? 10 : 5,
+    width: Dimensions.get('window').width * 0.6,
+    backgroundColor: '#062C49',
+    borderRadius: 30,
+    paddingVertical: 10,
+  },
+  topView: {
     display: 'flex',
+    flex: 0.7,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inputRow: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  degree: {
+    fontSize: 30,
+    alignSelf: 'center',
+  },
+  bottomView: {
+    flex: 0.3,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
