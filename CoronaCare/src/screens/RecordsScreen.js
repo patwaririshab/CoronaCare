@@ -1,14 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, { Component, useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, FlatList, StyleSheet, Image, Dimensions, Alert } from 'react-native';
+import { SafeAreaView, View, Text, FlatList, StyleSheet, Image, Dimensions, Alert, RefreshControl, ImageBackground } from 'react-native';
 import RecordEntry from '../components/molecules/recordEntry';
-import { Button } from 'react-native-elements'
+import { Button } from 'react-native-elements';
 import styles from '../styles/styles';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
 import {getData} from '../services/FetchData';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import { deleteRecord } from '../services/DeleteData';
+import {Icon} from 'react-native-elements';
 
 const LoadingView = () => {
   return (
@@ -17,24 +18,24 @@ const LoadingView = () => {
         Loading...
       </Text>
     </View>
-  )
-}
+  );
+};
 
 const RecordsScreen = () => {
-  const [loading, setLoading] = useState(false)
-  const [list, setList] = useState([])
+  const [loading, setLoading] = useState(false);
+  const [list, setList] = useState([]);
 
   const fetchFlatListData = () => {
-    setLoading(true)
+    setLoading(true);
     getData()
     .then(result => {
-      setList(result)
-      setLoading(false)
-    })
-  }
+      setList(result);
+      setLoading(false);
+    });
+  };
 
   const onRightAction = async rowKey => {
-    const recordId = rowKey
+    const recordId = rowKey;
     Alert.alert(
       'Warning',
       'Are you sure you want to delete this record?',
@@ -42,33 +43,36 @@ const RecordsScreen = () => {
         {
           text: 'Confirm',
           onPress: async () => {
-            try{
+            try {
               deleteRecord(recordId);
             }
             catch (err) {
-              alert(`Failed to delete record with error: ${err}`)
+              alert(`Failed to delete record with error: ${err}`);
             }
-            fetchFlatListData()
-          }
+            fetchFlatListData();
+          },
         },
         {
           text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed')
-        }
+          onPress: () => console.log('Cancel Pressed'),
+        },
       ]
-    )
-   
-  }
+    );
 
-  useEffect(() => fetchFlatListData() , [])
+  };
+
+  useEffect(() => fetchFlatListData() , []);
   const getAmOrPm = (firebaseTimestamp) => {
-    const date = firebaseTimestamp.toDate()
-    if (date.getHours() > 11) {return "PM"}
-    return "AM"
-  }
+    const date = firebaseTimestamp.toDate();
+    if (date.getHours() > 11) {return 'PM';}
+    return 'AM';
+  };
 
   return (
       <SafeAreaView style={styles.container}>
+        <ImageBackground
+          source={require('../assets/images/bkgrdBlank.png')}
+          style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center'}}>
         <Text style={styles.welcomeText}>Records</Text>
         <Button
         title="Sign Out"
@@ -87,24 +91,20 @@ const RecordsScreen = () => {
           });});
         }
       }/>
-      <Button
-        type= "clear"
-        title="Refresh Page"
-        onPress={fetchFlatListData}
-      />
-      {loading ? 
+      <Text style={{textAlign: 'center'}}>Pull down to refresh</Text>
+      {loading ?
       <LoadingView/> :
         <SwipeListView
           useNativeDriver={true}
           disableRightSwipe
           keyExtractor={(item) => item.id}
           data={list}
-          friction={70}
-          rightOpenValue={-150}
-          previewOpenValue={-40}
-          previewOpenDelay={3000}
-          rightActivationValue={-Dimensions.get('window').width + 60}
+          rightOpenValue={-80}
+          friction={50}
+          rightActivationValue={-Dimensions.get('window').width * 0.75}
           onRightAction={onRightAction}
+          onRefresh={fetchFlatListData}
+          refreshing={loading ? true : false}
           renderItem={({ item }) => <RecordEntry
             image={item.imageUrl}
             AMPM={getAmOrPm(item.firebaseTimestamp)}
@@ -114,11 +114,13 @@ const RecordsScreen = () => {
           }
           renderHiddenItem={({ item }) => (
           <View style={{ height: 140, display: 'flex', backgroundColor: '#ff0000',flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
-              <Text style={{fontSize: 35, paddingEnd: 18}}>Swipe to Delete</Text>
+              <Icon type="font-awesome" name="trash" color="#ffffff" style={{marginRight: 20}} size={40}/>
           </View>
           )}
         />}
+      </ImageBackground>
       </SafeAreaView>
-  )}
+  );
+};
 
-  export default RecordsScreen
+  export default RecordsScreen;
