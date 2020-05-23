@@ -55,6 +55,22 @@ const deleteAllRecords = () => {
   );
 };
 
+const changePassword = () => {
+  Navigation.push('SETTINGS_STACK', {
+    component: {
+      name: 'navigation.CoronaCare.ChangePasswordScreen',
+      options: {
+        topBar: {
+          visible: true,
+          title: {
+            text: 'Change Password',
+          },
+        },
+      },
+    },
+  });
+};
+
 const deleteAccount = () => {
   Alert.alert(
     'Warning',
@@ -89,7 +105,7 @@ const list = [
   },
   {
     title: 'Change Password',
-    onPress: () => console.log('Change Password'),
+    onPress: () => changePassword(),
   },
   {
     title: 'Delete All Records',

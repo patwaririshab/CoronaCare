@@ -50,18 +50,22 @@ const NavigationTabInitialiser = () => {
             },
           },
           {
-            component: {
-              name: 'navigation.CoronaCare.SettingsScreen',
+            stack: {
+              id: 'SETTINGS_STACK',
+              children: [{
+                  component: {
+                  name: 'navigation.CoronaCare.SettingsScreen',
+                },
+              }],
               options: {
-                topBar: { visible: false },
+                topBar: {visible: true},
                 bottomTab: {
                   text: 'Settings',
                   icon: require('../assets/images/cog.png'),
-                }
-              }
-              
-            }
-          }
+                },
+              },
+            },
+          },
         ],
       },
     },

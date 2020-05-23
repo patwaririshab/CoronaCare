@@ -11,6 +11,7 @@ import TempConfirmation from '../screens/TempConfirmation';
 import SignUpScreen from '../screens/SignUpScreen';
 import WebViewScreen from '../screens/WebViewScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 
 export function registerScreens(){
     Navigation.registerComponent('navigation.CoronaCare.App', () => App);
@@ -24,4 +25,5 @@ export function registerScreens(){
     Navigation.registerComponent('navigation.CoronaCare.SignUpScreen',() => SignUpScreen);
     Navigation.registerComponent('navigation.CoronaCare.WebViewScreen',() => WebViewScreen);
     Navigation.registerComponent('navigation.CoronaCare.SettingsScreen',() => SettingsScreen);
+    Navigation.registerComponent('navigation.CoronaCare.ChangePasswordScreen', () => ChangePasswordScreen);
 }
