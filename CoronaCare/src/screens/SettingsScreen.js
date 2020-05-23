@@ -16,20 +16,15 @@ import {
   DeleteAllRecords,
 } from '../services/SettingsScreenServices';
 import {OrganisationName} from '../services/WebPortalLinks';
+import LoginInitialiser from '../navigation/LoginInitialiser';
 
 const signOutUser = () => {
   auth()
     .signOut()
-    .then(() => console.log('User signed out!'))
     .then(() => {
-      Navigation.setRoot({
-        root: {
-          component: {
-            name: 'navigation.CoronaCare.App',
-          },
-        },
-      });
-    });
+      LoginInitialiser();
+    })
+    .then(() => alert('Signed Out Successfully!'));
 };
 
 const deleteAllRecords = () => {
