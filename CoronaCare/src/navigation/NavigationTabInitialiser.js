@@ -55,6 +55,9 @@ const NavigationTabInitialiser = () => {
               children: [{
                   component: {
                   name: 'navigation.CoronaCare.SettingsScreen',
+                  options: {
+                    topBar: {visible: false},
+                  },
                 },
               }],
               options: {
