@@ -6,12 +6,16 @@ import {
   Dimensions,
   View,
   Text,
+  Alert,
 } from 'react-native';
 import {Button, ListItem} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 import {Navigation} from 'react-native-navigation';
-import {DeleteAccount, DeleteAllRecords} from '../services/SettingsScreenServices';
-import { OrganisationName } from '../services/WebPortalLinks'
+import {
+  DeleteAccount,
+  DeleteAllRecords,
+} from '../services/SettingsScreenServices';
+import {OrganisationName} from '../services/WebPortalLinks';
 
 const signOutUser = () => {
   auth()
@@ -26,6 +30,52 @@ const signOutUser = () => {
         },
       });
     });
+};
+
+const deleteAllRecords = () => {
+  Alert.alert(
+    'Warning',
+    'Are you sure you want to delete all your records record? This action is irreversible!',
+    [
+      {
+        text: 'Confirm',
+        onPress: async () => {
+          try {
+            await DeleteAllRecords();
+          } catch (err) {
+            alert(`Failed to delete record with error: ${err}`);
+          }
+        },
+      },
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+      },
+    ],
+  );
+};
+
+const deleteAccount = () => {
+  Alert.alert(
+    'Warning',
+    'Are you sure you want to delete your account? This action is irreversible!',
+    [
+      {
+        text: 'Confirm',
+        onPress: async () => {
+          try {
+            await DeleteAccount();
+          } catch (err) {
+            alert(`Failed to delete account with error: ${err}`);
+          }
+        },
+      },
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+      },
+    ],
+  );
 };
 
 const currentUserEmail = () => {
@@ -43,12 +93,12 @@ const list = [
   },
   {
     title: 'Delete All Records',
-    onPress: () => DeleteAllRecords(),
+    onPress: () => deleteAllRecords(),
     color: 'red',
   },
   {
     title: 'Delete Account',
-    onPress: () => DeleteAccount(),
+    onPress: () => deleteAccount(),
     color: 'red',
   },
 ];
@@ -67,7 +117,10 @@ const SettingsScreen = () => {
               <Text style={styles.accountText}>
                 Email: {currentUserEmail()}
               </Text>
-              <Text style={styles.accountText}>Organization: {OrganisationName === '' ? 'None Set': OrganisationName}</Text>
+              <Text style={styles.accountText}>
+                Organization:{' '}
+                {OrganisationName === '' ? 'None Set' : OrganisationName}
+              </Text>
             </View>
           </View>
         </View>

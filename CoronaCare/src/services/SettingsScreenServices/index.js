@@ -7,10 +7,10 @@ import {Navigation} from 'react-native-navigation';
 export const DeleteAccount = async () => {
   const currentUser = auth().currentUser;
   try {
-    await DeleteAllRecords();
+    DeleteAllRecords();
     currentUser
       .delete()
-      .then(() => alert('Succesfully Delete User Account'))
+      .then(() => alert('Succesfully Deleted User Account'))
       .then(() => {
         Navigation.setRoot({
           root: {
