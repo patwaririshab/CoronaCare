@@ -12,6 +12,7 @@ import SignUpScreen from '../screens/SignUpScreen';
 import WebViewScreen from '../screens/WebViewScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
+import OrganizationUrlScreen from '../screens/OrganizationUrlScreen';
 
 export function registerScreens(){
     Navigation.registerComponent('navigation.CareRecord.App', () => App);
@@ -26,4 +27,5 @@ export function registerScreens(){
     Navigation.registerComponent('navigation.CareRecord.WebViewScreen',() => WebViewScreen);
     Navigation.registerComponent('navigation.CareRecord.SettingsScreen',() => SettingsScreen);
     Navigation.registerComponent('navigation.CareRecord.ChangePasswordScreen', () => ChangePasswordScreen);
+    Navigation.registerComponent('navigation.CareRecord.OrganizationUrlScreen', () => OrganizationUrlScreen);
 }

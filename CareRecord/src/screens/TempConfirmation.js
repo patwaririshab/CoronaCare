@@ -15,7 +15,7 @@ import {uploadImage, uploadEntry} from '../services/FirebaseImageUpload';
 import {Navigation} from 'react-native-navigation';
 import {CreateFirebaseTimestamp} from '../services/CurrentDateGenerator';
 import {Input, Button} from 'react-native-elements';
-import { WebPortalUrl } from '../services/WebPortalLinks';
+import {getOrganizationUrl} from '../services/FetchData';
 
 // eslint-disable-next-line no-undef
 export default TempConfirmation = (props) => {
@@ -48,20 +48,27 @@ export default TempConfirmation = (props) => {
     setUploadState('completed');
   };
 
-  const uploadPortal = () => {
-    if (WebPortalUrl === '') {
-      alert('Please set an organization url from the settings screen before you attempt to upload to portal')
-      return
-    }
-    Navigation.push('AFTERLOGIN_STACK', {
-      component: {
-        name: 'navigation.CareRecord.WebViewScreen',
-        options: {
-          topBar: {
-            visible: true,
+  const uploadPortal = async () => {
+    await getOrganizationUrl().then((url) => {
+      if (url === '') {
+        alert(
+          'Please set an organization url from the settings screen before you attempt to upload to portal',
+        );
+        return;
+      }
+      Navigation.push('AFTERLOGIN_STACK', {
+        component: {
+          name: 'navigation.CareRecord.WebViewScreen',
+          passProps: {
+            url: url,
+          },
+          options: {
+            topBar: {
+              visible: true,
+            },
           },
         },
-      },
+      });
     });
   };
 
