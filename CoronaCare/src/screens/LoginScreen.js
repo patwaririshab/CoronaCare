@@ -68,17 +68,13 @@ export default class LoginScreen extends Component {
           topBar: {
             visible: true,
             noBorder: true,
-            // background: {
-            //     color: '#ffffff00',
-            //     translucent: false
-            // },
             backButton: {
               color: '#147efb',
               showTitle: true,
               title: 'login screen',
             },
           },
-          statusBar: {visible: false}
+          statusBar: {visible: false},
         },
       },
     });
@@ -120,7 +116,7 @@ export default class LoginScreen extends Component {
                 leftIcon={{type: 'font-awesome', name: 'lock'}}
                 leftIconContainerStyle={{marginRight: 10}}
               />
-            <Button
+              <Button
                 onPress={this.sinInUser.bind(this)}
                 title="Login"
                 type="solid"
@@ -132,31 +128,31 @@ export default class LoginScreen extends Component {
               </Text>
             </View>
           </KeyboardAvoidingView>
-          <View style={{ alignItems: 'center'}}>
-              <Image
-                source={require('../assets/images/loginDivider.png')}
-                containerStyle={{
-                  width: Dimensions.get('window').width * 0.9,
-                  height: 15,
-                }}
-              />
-              <Button
-                title="Google Sign-In"
-                type="outline"
-                buttonStyle={[styles.buttonStyle]}
-                titleStyle={{color: 'white', fontSize: 15}}
-                onPress={this.signInWithGoogle}
-                icon={{type: 'font-awesome', name: 'google', color: 'white'}}
-                iconContainerStyle={{marginRight: 10}}
-              />
-              <Button
-                title="Sign Up"
-                type="outline"
-                buttonStyle={[styles.buttonStyle, {marginBottom: 30}]}
-                titleStyle={{color: 'white', fontSize: 15}}
-                onPress={this.onSignUpPress}
-              />
-            </View>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              source={require('../assets/images/loginDivider.png')}
+              containerStyle={{
+                width: Dimensions.get('window').width * 0.9,
+                height: 15,
+              }}
+            />
+            <Button
+              title="Google Sign-In"
+              type="outline"
+              buttonStyle={[styles.buttonStyle]}
+              titleStyle={{color: 'white', fontSize: 15}}
+              onPress={this.signInWithGoogle}
+              icon={{type: 'font-awesome', name: 'google', color: 'white'}}
+              iconContainerStyle={{marginRight: 10}}
+            />
+            <Button
+              title="Sign Up"
+              type="outline"
+              buttonStyle={[styles.buttonStyle, {marginBottom: 30}]}
+              titleStyle={{color: 'white', fontSize: 15}}
+              onPress={this.onSignUpPress}
+            />
+          </View>
         </ImageBackground>
       </SafeAreaView>
     );
@@ -169,7 +165,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: Dimensions.get('window').height * 0.25,
-    },
+  },
   topViewController: {
     flex: 1,
     justifyContent: 'flex-start',
@@ -184,7 +180,7 @@ const styles = StyleSheet.create({
   },
   bkgrdImage: {
     flex: 1,
-    resizeMode: "cover",
+    resizeMode: 'cover',
     justifyContent: 'center',
   },
   bkgrdContainer: {

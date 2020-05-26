@@ -2,25 +2,17 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import firebase from '@react-native-firebase/app';
-import React from 'react';
 import {Navigation} from 'react-native-navigation';
+import LoginInitialiser from '../../navigation/LoginInitialiser';
 
 export const DeleteAccount = async () => {
   const currentUser = auth().currentUser;
   try {
-    await DeleteAllRecords();
+    DeleteAllRecords();
     currentUser
       .delete()
-      .then(() => alert('Succesfully Delete User Account'))
-      .then(() => {
-        Navigation.setRoot({
-          root: {
-            component: {
-              name: 'navigation.CoronaCare.LoginScreen',
-            },
-          },
-        });
-      });
+      .then(() => alert('Succesfully Deleted User Account'))
+      .then(() => LoginInitialiser());
   } catch {
     (err) => alert('Failed to delete user. Contact Administrator.' + err);
   }

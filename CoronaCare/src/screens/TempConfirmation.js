@@ -15,6 +15,7 @@ import {uploadImage, uploadEntry} from '../services/FirebaseImageUpload';
 import {Navigation} from 'react-native-navigation';
 import {CreateFirebaseTimestamp} from '../services/CurrentDateGenerator';
 import {Input, Button} from 'react-native-elements';
+import { WebPortalUrl } from '../services/WebPortalLinks';
 
 // eslint-disable-next-line no-undef
 export default TempConfirmation = (props) => {
@@ -48,6 +49,10 @@ export default TempConfirmation = (props) => {
   };
 
   const uploadPortal = () => {
+    if (WebPortalUrl === '') {
+      alert('Please set an organization url from the settings screen before you attempt to upload to portal')
+      return
+    }
     Navigation.push('AFTERLOGIN_STACK', {
       component: {
         name: 'navigation.CoronaCare.WebViewScreen',
