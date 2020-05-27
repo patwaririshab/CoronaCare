@@ -49,13 +49,19 @@ const OrganizationUrlScreen = () => {
         <KeyboardAvoidingView
           style={styles.keyboardAvoidingView}
           behavior={'position'}>
+          <View style={styles.topView}>
+            <View style={styles.accountDetailsView}>
+              <View style={styles.accountDetailsBox}>
+                <Text style={styles.headerText}>
+                  Current Organization Name: {organizationName}
+                </Text>
+                <Text style={styles.headerText}>
+                  {`Current Organization Url:\n${organizationUrl}`}
+                </Text>
+              </View>
+            </View>
+          </View>
           <View style={styles.inputView}>
-            <Text style={styles.headerText}>
-              Current Organization Name: {organizationName} 
-            </Text>
-            <Text style={styles.headerText}>
-              Current Organization Url: {organizationUrl}
-            </Text>
             <Input
               placeholder={'Set Organization Name'}
               onChangeText={(newValue) => setNewOrganizationName(newValue)}
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputView: {
-    flex: 0.5,
+    flex: 0.3,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -124,5 +130,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#062C49',
     borderRadius: 30,
     paddingVertical: 10,
+  },
+  accountDetailsView: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    height: '70%',
+  },
+  accountDetailsBox: {
+    width: '90%',
+    borderColor: '#7a7f80',
+    borderWidth: 1,
+    borderRadius: 8,
+    backgroundColor: 'white',
+    height: '70%',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: 15,
+    shadowOffset: {
+      height: 5,
+      width: 5,
+    },
+  },
+  topView: {
+    flex: 0.3,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
 });
