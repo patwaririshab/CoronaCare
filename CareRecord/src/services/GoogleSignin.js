@@ -3,8 +3,7 @@ import auth from '@react-native-firebase/auth';
 
 export default async function onGoogleButtonPress() {
     await GoogleSignin.configure({
-        webClientId: "109484316758-i49r5g01u99t6l738vncov3p00c7bne2.apps.googleusercontent.com",
-        // iosClientId: "109484316758-0dp9vjjepnkm1opeaqind03n11531p3q.apps.googleusercontent.com"
+        webClientId: "109484316758-ura2bg698jkqaq8qocmpsh5ifebni3al.apps.googleusercontent.com",
     })
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
