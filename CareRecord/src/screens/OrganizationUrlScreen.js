@@ -29,6 +29,10 @@ const OrganizationUrlScreen = () => {
 
   const updateOrganizationDetails = async () => {
     const currentUserUid = auth().currentUser.uid;
+    if (newOrganizationName.trim() === '' || newOrganizationUrl.trim() === '') {
+      alert('You need to provide both a newOrganizationName and newOrganizationUrl')
+      return;
+    }
     await firestore()
       .collection('users')
       .doc(`${currentUserUid}`)
