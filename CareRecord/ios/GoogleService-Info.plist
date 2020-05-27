@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>109484316758-0dp9vjjepnkm1opeaqind03n11531p3q.apps.googleusercontent.com</string>
+	<string>109484316758-ura2bg698jkqaq8qocmpsh5ifebni3al.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.109484316758-0dp9vjjepnkm1opeaqind03n11531p3q</string>
+	<string>com.googleusercontent.apps.109484316758-ura2bg698jkqaq8qocmpsh5ifebni3al</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>109484316758-32qrqfca5gig1b597jadqtr30phaep0b.apps.googleusercontent.com</string>
+	<string>109484316758-4lgbm8g7ua9nagnrcnv94gc2tduaeb1a.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyA1o5aP6tSfrL6Vx1qzOwDQ26_-9VNJH6Q</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.reactjs.native.example.CoronaCare</string>
+	<string>org.reactjs.native.example.CareRecord</string>
 	<key>PROJECT_ID</key>
 	<string>coronacare-322b1</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:109484316758:ios:0e7992a3622a73a3d003f7</string>
+	<string>1:109484316758:ios:946e41d935e04f24d003f7</string>
 	<key>DATABASE_URL</key>
 	<string>https://coronacare-322b1.firebaseio.com</string>
 </dict>
