@@ -80,6 +80,26 @@ export default class LoginScreen extends Component {
     });
   };
 
+  onResetPassword = () => {
+    Navigation.push('LOGIN_STACK', {
+      component: {
+        name: 'navigation.CareRecord.ResetPasswordScreen',
+        options: {
+          topBar: {
+            visible: true,
+            noBorder: true,
+            backButton: {
+              color: '#147efb',
+              showTitle: true,
+              title: 'login screen',
+            },
+          },
+          statusBar: {visible: false},
+        },
+      },
+    });
+  }
+
   signInWithGoogle = () => {
     onGoogleButtonPress()
       .then(() => this.changeScreen())
@@ -123,7 +143,7 @@ export default class LoginScreen extends Component {
                 buttonStyle={styles.buttonStyle}
                 titleStyle={{color: 'white', fontSize: 15}}
               />
-              <Text onPress={this.onSignUpPress} style={{color: 'black'}}>
+              <Text onPress={this.onResetPassword} style={{color: 'black'}}>
                 Forgot Password
               </Text>
             </View>
