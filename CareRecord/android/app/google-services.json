@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:109484316758:android:a7db191a27e9944cd003f7",
+        "mobilesdk_app_id": "1:109484316758:android:ff644bace9374cccd003f7",
         "android_client_info": {
           "package_name": "com.carerecord"
         }
       },
       "oauth_client": [
         {
-          "client_id": "109484316758-4lgbm8g7ua9nagnrcnv94gc2tduaeb1a.apps.googleusercontent.com",
+          "client_id": "109484316758-495s59qbbsq9t2sn3r3tpk5sm6bbqf51.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.carerecord",
@@ -40,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "109484316758-0dp9vjjepnkm1opeaqind03n11531p3q.apps.googleusercontent.com",
+              "client_id": "109484316758-ura2bg698jkqaq8qocmpsh5ifebni3al.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.reactjs.native.example.CoronaCare"
+                "bundle_id": "org.reactjs.native.example.CareRecord"
               }
             }
           ]
