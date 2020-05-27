@@ -29,6 +29,10 @@ const ResetPasswordScreen = () => {
   const [inputEmail, setEmail] = useState('');
 
   const forgotPassword = () => {
+    if (inputEmail.trim() === '') {
+      alert('Please ensure you have passed an email.')
+      return
+    }
     auth()
       .sendPasswordResetEmail(inputEmail)
       .then((response) => {
@@ -36,7 +40,7 @@ const ResetPasswordScreen = () => {
         response.json;
       })
       .catch((error) => {
-        alert('Email not found');
+        alert(`Failed to reset email with error: ${error}`);
       });
     console.log('My Input Email', inputEmail);
   };
