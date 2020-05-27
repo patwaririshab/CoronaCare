@@ -36,7 +36,7 @@ const OrganizationUrlScreen = () => {
     await firestore()
       .collection('users')
       .doc(`${currentUserUid}`)
-      .update({
+      .set({
         orgName: newOrganizationName,
         orgUrl: newOrganizationUrl,
       })
