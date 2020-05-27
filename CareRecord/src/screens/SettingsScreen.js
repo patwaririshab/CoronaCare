@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
@@ -15,7 +15,7 @@ import {
   DeleteAccount,
   DeleteAllRecords,
 } from '../services/SettingsScreenServices';
-import {OrganisationName} from '../services/WebPortalLinks';
+import {getOrganizationName} from '../services/FetchData';
 import LoginInitialiser from '../navigation/LoginInitialiser';
 
 const signOutUser = () => {
@@ -89,6 +89,22 @@ const deleteAccount = () => {
   );
 };
 
+const changeOrganizationUrl = () => {
+  Navigation.push('SETTINGS_STACK', {
+    component: {
+      name: 'navigation.CareRecord.OrganizationUrlScreen',
+      options: {
+        topBar: {
+          visible: true,
+          title: {
+            text: 'Change Organization Url',
+          },
+        },
+      },
+    },
+  });
+};
+
 const currentUserEmail = () => {
   return auth().currentUser.email;
 };
@@ -96,7 +112,7 @@ const currentUserEmail = () => {
 const list = [
   {
     title: 'Update Organisation URL',
-    onPress: () => console.log('Hello World'),
+    onPress: () => changeOrganizationUrl(),
   },
   {
     title: 'Change Password',
@@ -115,6 +131,12 @@ const list = [
 ];
 
 const SettingsScreen = () => {
+  const [currentOrganization, setCurrentOrganization] = useState('');
+  useEffect(() => {
+    getOrganizationName().then((res) => {
+      setCurrentOrganization(res);
+    });
+  }, [currentOrganization, setCurrentOrganization]);
   return (
     <SafeAreaView style={{flex: 1}}>
       <ImageBackground
@@ -130,7 +152,7 @@ const SettingsScreen = () => {
               </Text>
               <Text style={styles.accountText}>
                 Organization:{' '}
-                {OrganisationName === '' ? 'None Set' : OrganisationName}
+                {currentOrganization === '' ? 'None Set' : currentOrganization}
               </Text>
             </View>
           </View>
