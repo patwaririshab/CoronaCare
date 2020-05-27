@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
@@ -21,50 +21,47 @@ const InputField = (props) => {
       onChangeText={(email) => props.setNewValue(email)}
       leftIcon={{type: 'font-awesome', name: 'user'}}
       leftIconContainerStyle={{marginRight: 10}}
-      autoCapitalize={false}
     />
   );
 };
 
-forgotPassword = (inputEmail) => {
-    auth()
-        .sendPasswordResetEmail(inputEmail)
-        .then((response) => {
-            alert('Please check your email...')
-            response.json;
-            })
-        .catch((error) => {
-        alert("Email not found");
-      })
-    console.log('My Input Email', inputEmail);
-  }
-
 const ResetPasswordScreen = () => {
   const [inputEmail, setEmail] = useState('');
 
+  const forgotPassword = () => {
+    auth()
+      .sendPasswordResetEmail(inputEmail)
+      .then((response) => {
+        alert('Please check your email...');
+        response.json;
+      })
+      .catch((error) => {
+        alert('Email not found');
+      });
+    console.log('My Input Email', inputEmail);
+  };
 
   return (
     <SafeAreaView style={styles.outerContainer}>
-
       <ImageBackground source={backgroundImage} style={styles.imageBagView}>
-          <Text style={styles.title}>Reset Password</Text>
-        <KeyboardAvoidingView
-          style={styles.keyboardAvoidingView}
-          >
+        <Text style={styles.title}>Reset Password</Text>
+        <KeyboardAvoidingView style={styles.keyboardAvoidingView}>
           <View style={styles.inputView} />
           <Text style={styles.headerText}>
             Enter your email for us to send you a reset link
           </Text>
           <InputField
             placeholder={'Email Address'}
-            setNewValue={(email) => {setEmail(email);
-            console.log(email)}}
+            setNewValue={(email) => {
+              setEmail(email);
+              console.log(email);
+            }}
           />
           <View style={styles.buttonView}>
             <Button
               buttonStyle={styles.button}
               title={'Submit'}
-              onPress={forgotPassword(inputEmail)}
+              onPress={forgotPassword}
             />
           </View>
         </KeyboardAvoidingView>
